@@ -10,6 +10,17 @@ const index = async (req, res) => {
     }
 }
 
+const show = async (req, res) => {
+    try {
+        const user = await db.User.findById(req.params.id);
+        if(!user) res.status(404).json({error: "No users found with that ID."});
+        res.json(users);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+}
+
 module.exports = {
-    index
+    index,
+    show
 }
