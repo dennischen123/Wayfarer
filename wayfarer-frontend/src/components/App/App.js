@@ -1,10 +1,13 @@
 import React from 'react';
 import './App.css';
+import Header from '../../layout/Header/Header';
+import routes from '../../config/routes';
 
 function App() {
   return (
     <div className="App">
-      <h1>Wayfarer</h1>
+      <Header />
+      {routes}
     </div>
   );
 }
