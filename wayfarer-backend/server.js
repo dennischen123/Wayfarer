@@ -13,10 +13,10 @@ const routes = require('./routes');
 const db = require('./models');
 
 // middleware
-app.use(bodyParser.urlencoded({extneded: false}));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-app.use('/ap1/v1', routes.api);
+app.use('/api/v1', routes.api);
 
 app.get('/', (req, res) => {
     res.send('api page');
