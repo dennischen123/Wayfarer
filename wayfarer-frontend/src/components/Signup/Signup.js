@@ -1,13 +1,11 @@
 import React from 'react';
 
-class Footer extends React.Component {
+export default class Signup extends React.Component {
     render() {
         return (
             <div>
-                Footer
+                <p>Signup Page</p>
             </div>
         );
     }
 }
-
-export default Footer;
