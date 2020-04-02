@@ -5,22 +5,22 @@ import Login from '../Login/Login';
 import { Link } from 'react-router-dom';
 
 export default class NavBar extends React.Component {
-    state = {
-        signInModalStatus : false,
-        registerModalStatus : false,
-    }
+    // state = {
+    //     signInModalStatus : false,
+    //     registerModalStatus : false,
+    // }
 
-    signInModalClicked = () => {
-        this.setState({
-            signInModalStatus : this.state.signInModalStatus ? false : true,
-        })
-    }
+    // signInModalClicked = () => {
+    //     this.setState({
+    //         signInModalStatus : this.state.signInModalStatus ? false : true,
+    //     })
+    // }
 
-    registerModalClicked = () => {
-        this.setState({
-            registerModalStatus : this.state.registerModalStatus ? false : true,
-        })
-    }
+    // registerModalClicked = () => {
+    //     this.setState({
+    //         registerModalStatus : this.state.registerModalStatus ? false : true,
+    //     })
+    // }
 
 
     render() {
@@ -40,7 +40,7 @@ export default class NavBar extends React.Component {
                         <Link to={'/'} onClick={this.registerModalClicked}>Register</Link>
                     </li>
                 </ul>
-                {/* {this.signInModal && <Login />} */}
+                {this.signInModalStatus && <Login />}
             </nav>
         );
     }
