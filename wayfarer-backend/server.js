@@ -2,9 +2,14 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+// const cors = require('cors');
+const session = require('express-session')
+const MongoStore = require('connect-mongo')(session);
+
+require('dotenv').config()
 
 // port 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT;
 
 // routes
 const routes = require('./routes');
@@ -16,6 +21,7 @@ const db = require('./models');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
+app.use('/api/v1', routes.auth);
 app.use('/api/v1', routes.api);
 
 app.get('/', (req, res) => {

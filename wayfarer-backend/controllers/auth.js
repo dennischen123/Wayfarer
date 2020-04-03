@@ -1,0 +1,74 @@
+const db = require('../models');
+const bcrypt = require('bcryptjs')
+
+const register = (req, res) => {
+
+    const newUser = {
+        username: req.body.username,
+        password: req.body.password
+    }
+
+    if(!newUser.username || !newUser.password)
+        return res.status(400).send('cannot be null')
+    
+    db.User.findOne({username: newUser.username}, (err, foundUser) => {
+        if(err)
+            return res.status(500).json(err)
+
+            if(foundUser)
+                return res.status(400).send('username taken')
+    })
+
+    bcrypt.genSalt(10, (err, salt) => {
+        if(err)
+            return res.status(500).json(err)
+
+        bcrypt.hash(newUser.password, salt, (err, hashedPwd) => {
+            if(err)
+                return res.status(500).json(err)
+            newUser.password = hashedPwd
+
+            db.User.create(newUser, (err, savedUser) => {
+                if(err)
+                    return res.status(500).json(err)
+
+                req.session.currentUser = {id: savedUser._id}
+
+                res.status(200).json(savedUser)
+            })
+        })
+    })
+}
+
+const login = (req, res) => {
+    const user = {
+        username: req.body.username,
+        password: req.body.password
+    }
+
+    if(!user.username || !user.password)
+        return res.sendStatus(400)
+
+    db.User.findOne({username: user.username}, (err, foundUser) => {
+        if(err)
+            return res.status(500).json(err)
+
+        if(!foundUser)
+            return res.sendStatus(400)
+
+        bcrypt.compare(user.password, foundUser.password, (err, match) => {
+            if(match) {
+                req.session.currentUser = {id: foundUser._id}
+                res.status(200).send('success')
+            } else {
+                res.sendStatus(400)
+            }
+        })
+    })
+}
+
+module.exports = {
+    register, 
+    findUser,
+    login
+}

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const DB_URL = process.env.MONGODB_URI || 'mongodb://localhost:27017/react-wayfarer';
+const DB_URL = process.env.MONGODB_URI;
 
 mongoose.connect(DB_URL, {
     useNewUrlParser: true,
