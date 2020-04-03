@@ -40,7 +40,8 @@ export default class NavBar extends React.Component {
                         <Link to={'/'} onClick={this.registerModalClicked}>Register</Link>
                     </li>
                 </ul>
-                {/* {this.signInModal && <Login />} */}
+                {/* <Login /> */}
+                {this.state.signInModalStatus && <Login signInModalClicked={this.signInModalClicked} signInModalStatus={this.state.signInModalStatus} />}
             </nav>
         );
     }
