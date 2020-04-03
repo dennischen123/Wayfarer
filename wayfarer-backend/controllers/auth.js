@@ -1,6 +1,7 @@
 const db = require('../models');
 const bcrypt = require('bcryptjs')
 
+
 const register = (req, res) => {
 
     const newUser = {
@@ -67,8 +68,28 @@ const login = (req, res) => {
     })
 }
 
+const logout = (req, res) => {
+    if(!req.session.currentUser)
+        return res.status(401).send('unauthorized');
+
+    req.session.destroy(err => {
+        res.sendStatus(200)
+    })
+}
+
+const findUser = (req, res) => {
+    if(!req.session.currentUser)
+        return res.status(401).send('unauthorized');
+
+    db.User.findById(req.session.currentUser.id, (err, foundUser) => {
+        res.json(foundUser)
+    })
+}
+
+
 module.exports = {
     register, 
     findUser,
-    login
+    login,
+    logout
 }
