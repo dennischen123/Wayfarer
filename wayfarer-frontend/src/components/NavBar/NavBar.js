@@ -1,5 +1,6 @@
 import React from 'react';
 import Login from '../Login/Login';
+import SignUp from '../Signup/Signup';
 // import Signup from '../Signup/Signup';
 // import Profile from '../Profile/Profile';
 import { Link } from 'react-router-dom';
@@ -25,22 +26,28 @@ export default class NavBar extends React.Component {
 
     render() {
         return (
-            <nav>
+            <nav className="navbar navbar-light bg-light">
+                <span className="navbar-brand mb-0 h1">Wayfarer</span>
                 <ul className="nav" id="myTab" role="tablist">
-                    <li>
-                        <Link to={'/'}>Home </Link>
+                    <li className="nav-item">
+                        <Link className="nav-link" to={'/'}>Home </Link>
+                    </li>                    
+                    <li className="nav-item">
+                        <Link className="nav-link" to={'/profile'}>Profile</Link>
                     </li>
-                    <li>
-                        <Link to={'/profile'}>Profile</Link>
+                    <li className="nav-item">
+                        <Link className="nav-link" to={'/'}>Log Out </Link>
                     </li>
-                    <li>
-                        <Link to={'/'} onClick={this.signInModalClicked}>Sign In</Link>
+
+                    <li className="nav-item">
+                        <Link className="nav-link" to={'/'} onClick={this.signInModalClicked}>Sign In</Link>
                     </li>
-                    <li>
-                        <Link to={'/'} onClick={this.registerModalClicked}>Register</Link>
+                    <li className="nav-item">
+                        <Link className="nav-link" to={'/'} onClick={this.registerModalClicked}>Register</Link>
                     </li>
                 </ul>
-                {/* {this.signInModal && <Login />} */}
+                {this.state.signInModalStatus && <Login signInModalClicked={this.signInModalClicked} signInModalStatus={this.state.signInModalStatus} />}
+                {this.state.registerModalStatus && <SignUp registerModalClicked={this.registerModalClicked} registerModalStatus={this.state.registerModalStatus} />}
             </nav>
         );
     }
