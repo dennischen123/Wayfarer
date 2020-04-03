@@ -27,8 +27,16 @@ class Login extends React.Component {
             .then((res) => {res.status(200)})
             .catch((err) => {console.log(err)})
         } 
+        else {
+            let email = document.querySelector('#emailField');
+            let password = document.querySelector('#passwordField');
+
+            !this.state.email && email.classList.add("alert-danger")
+            !this.state.password && password.classList.add("alert-danger")
+            console.log(email)
+            console.log(password)
+        }
     }
-    
 
     render() {
         return(
@@ -53,12 +61,11 @@ class Login extends React.Component {
                                     We'll never share your email with anyone else.
                                 </Form.Text>
                             </Form.Group>
-
                             <Form.Group>
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control 
-                                    className="alert alert-danger"
                                     id="passwordField"
+                                    className=""
                                     type="password" 
                                     name="password" 
                                     value={this.state.password} 
