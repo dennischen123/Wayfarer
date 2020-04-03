@@ -1,10 +1,50 @@
-import React from 'react';
+import React from 'react'; 
 import Modal from "react-bootstrap/Modal";
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 class SignUp extends React.Component {
+
+    state = {
+        email: '',
+        username: '',
+        password: '',
+    }
+
+    handleChange = (event) => {
+        this.setState({
+            [event.target.name] : event.target.value
+        })
+    }
+
+    handleRegister = () => {
+        if (this.state.email && this.state.username && this.state.password){
+            axios.post('/users', {
+                email: this.state.email,
+                username: this.state.username,
+                password: this.state.password,
+            })
+            .then((res) => {res.status(200)})
+            .catch((err) => {console.log(err)})
+        } else{
+            let email = document.querySelector('#regEmail')
+            let username = document.querySelector('#regUsername')
+            let password = document.querySelector('#regPassword')
+            if  (!this.state.email)
+                email.classList.add('alert-danger')
+            
+            if  (!this.state.username)
+                username.classList.add('alert-danger')
+            
+            if  (!this.state.password)
+                password.classList.add('alert-danger')
+        }
+    }
+
+
+
 
     render() {
         return (
@@ -17,18 +57,39 @@ class SignUp extends React.Component {
                         <Form>
                             <Form.Group controlId="formBasicEmail">
                                 <Form.Label>Email address</Form.Label>
-                                <Form.Control type="email" placeholder="Enter email" />
+                                <Form.Control 
+                                    id="regEmail"
+                                    type="email" 
+                                    placeholder="Enter email" 
+                                    name="email" 
+                                    value={this.state.email}
+                                    onChange={this.handleChange}
+                                    />
                                 <Form.Text className="text-muted">
                                     We'll never share your email with anyone else.
                                 </Form.Text>
                             </Form.Group>
                             <Form.Group controlId="formName">
                                 <Form.Label>Username</Form.Label>
-                                <Form.Control type="text" placeholder="Enter username" />
+                                <Form.Control 
+                                    id="regUsername"
+                                    type="text" 
+                                    placeholder="Enter username" 
+                                    name="username" 
+                                    value={this.state.username}
+                                    onChange={this.handleChange}
+                                    />
                             </Form.Group>
                             <Form.Group controlId="formBasicPassword">
                                 <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" placeholder="Password" />
+                                <Form.Control 
+                                    id="regPassword"
+                                    type="password" 
+                                    placeholder="Password" 
+                                    name="password" 
+                                    value={this.state.password}
+                                    onChange={this.handleChange}
+                                    />
                             </Form.Group>
                         </Form>
                     </Modal.Body>
@@ -40,7 +101,7 @@ class SignUp extends React.Component {
                         </Button>
                         <Button 
                             variant="primary" 
-                            onClick={this.props.registerModalClicked} >
+                            onClick={this.handleRegister} >
                             Register
                         </Button>
                     </Modal.Footer>
