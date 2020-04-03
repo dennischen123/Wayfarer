@@ -46,12 +46,8 @@ export default class NavBar extends React.Component {
                         <Link className="nav-link" to={'/'} onClick={this.registerModalClicked}>Register</Link>
                     </li>
                 </ul>
-<<<<<<< HEAD
-                {this.signInModalStatus && <Login />}
-=======
                 {this.state.signInModalStatus && <Login signInModalClicked={this.signInModalClicked} signInModalStatus={this.state.signInModalStatus} />}
                 {this.state.registerModalStatus && <SignUp registerModalClicked={this.registerModalClicked} registerModalStatus={this.state.registerModalStatus} />}
->>>>>>> submaster
             </nav>
         );
     }
