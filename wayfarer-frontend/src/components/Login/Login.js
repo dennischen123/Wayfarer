@@ -36,8 +36,16 @@ class Login extends React.Component {
                         </Form>
                     </Modal.Body>
                     <Modal.Footer>
-                        <button onClick={this.props.signInModalClicked}>Cancel</button>
-                        <button>Login</button>
+                        <Button
+                            variant="danger"
+                            onClick={this.props.signInModalClicked} >
+                            Cancel
+                        </Button>
+                        <Button
+                            variant="primary"
+                            onClick={this.props.signInModalClicked} >
+                            Login
+                        </Button>
                     </Modal.Footer>
                 </Modal>
             </>
