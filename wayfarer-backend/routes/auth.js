@@ -1,0 +1,9 @@
+const express = require('express');
+const router = express.Router();
+const ctrl = require('../controllers');
+
+router.post('/register', crtl.auth.register);
+router.post('/login', ctrl.auth.login);
+router.get('/user', ctrl.auth.findUser)
+
+module.exports = router;
