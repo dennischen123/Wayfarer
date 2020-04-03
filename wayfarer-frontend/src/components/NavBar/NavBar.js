@@ -26,14 +26,19 @@ export default class NavBar extends React.Component {
 
     render() {
         return (
-            <nav>
-                <ul className="nav nav-tabs" id="myTab" role="tablist">
+            <nav className="navbar navbar-light bg-light">
+                <span className="navbar-brand mb-0 h1">Wayfarer</span>
+                <ul className="nav" id="myTab" role="tablist">
                     <li className="nav-item">
                         <Link className="nav-link" to={'/'}>Home </Link>
-                    </li>
+                    </li>                    
                     <li className="nav-item">
                         <Link className="nav-link" to={'/profile'}>Profile</Link>
                     </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to={'/'}>Log Out </Link>
+                    </li>
+
                     <li className="nav-item">
                         <Link className="nav-link" to={'/'} onClick={this.signInModalClicked}>Sign In</Link>
                     </li>

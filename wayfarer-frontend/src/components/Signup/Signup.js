@@ -34,14 +34,14 @@ class SignUp extends React.Component {
                     </Modal.Body>
                     <Modal.Footer>
                         <Button 
-                        variant="danger" 
-                        onClick={this.props.registerModalClicked} >
-                        Cancel
+                            variant="danger" 
+                            onClick={this.props.registerModalClicked} >
+                            Cancel
                         </Button>
                         <Button 
-                        variant="primary" 
-                        onClick={this.props.registerModalClicked} >
-                        Register
+                            variant="primary" 
+                            onClick={this.props.registerModalClicked} >
+                            Register
                         </Button>
                     </Modal.Footer>
                 </Modal>
