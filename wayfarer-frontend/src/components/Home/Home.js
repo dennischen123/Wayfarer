@@ -26,9 +26,8 @@ class Home extends React.Component {
         return (
             <div>
                 <h1>Home Page</h1>
-                {/* <img src="https://placebear.com/800/300" alt=""></img> */}
+                <img src="https://placebear.com/800/300" alt=""></img>
                 <About />
-                <Login />
             </div>
         );
     }

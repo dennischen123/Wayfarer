@@ -21,7 +21,7 @@ class SignUp extends React.Component {
 
     handleRegister = () => {
         if (this.state.email && this.state.username && this.state.password){
-            axios.post('/users', {
+            axios.post('localhost:4000/api/v1/users', {
                 email: this.state.email,
                 username: this.state.username,
                 password: this.state.password,
@@ -55,7 +55,7 @@ class SignUp extends React.Component {
                     </Modal.Header>
                     <Modal.Body>
                         <Form>
-                            <Form.Group controlId="formBasicEmail">
+                            <Form.Group>
                                 <Form.Label>Email address</Form.Label>
                                 <Form.Control 
                                     id="regEmail"
@@ -69,7 +69,7 @@ class SignUp extends React.Component {
                                     We'll never share your email with anyone else.
                                 </Form.Text>
                             </Form.Group>
-                            <Form.Group controlId="formName">
+                            <Form.Group>
                                 <Form.Label>Username</Form.Label>
                                 <Form.Control 
                                     id="regUsername"
@@ -80,7 +80,7 @@ class SignUp extends React.Component {
                                     onChange={this.handleChange}
                                     />
                             </Form.Group>
-                            <Form.Group controlId="formBasicPassword">
+                            <Form.Group>
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control 
                                     id="regPassword"
