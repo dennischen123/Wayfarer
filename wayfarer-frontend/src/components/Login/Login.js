@@ -20,11 +20,11 @@ class Login extends React.Component {
 
     handleSignIn = () => {
         if (this.state.email && this.state.password){
-            axios.post('/user/login', {
+            axios.post('http://localhost:4000/api/v1/login', {
                 email: this.state.email,
                 password: this.state.password
             })
-            .then((res) => {res.status(200)})
+            .then((res) => this.props.signedIn)
             .catch((err) => {console.log(err)})
         } 
         else {
