@@ -25,7 +25,7 @@ export default class Profile extends React.Component {
     render() {
         return (
             <div>
-                <h1>Profile Page</h1>
+                <h1 className="display-1">Profile Page</h1>
                 <p>Name: {this.state.user.name}</p>
                 <p>Set City: {this.state.user.city} </p>
                 <p>Join Date: {this.state.user.date}</p>

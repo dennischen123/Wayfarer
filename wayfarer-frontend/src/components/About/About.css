@@ -1,0 +1,12 @@
+.about-container{
+    background-color: #FF8980;
+    padding: 50px;
+    margin: 50px;
+
+}
+
+.card-bordered{
+    padding: 30px 15px;
+    border: 3px double;
+    border-color: #e8e8e8;
+}
