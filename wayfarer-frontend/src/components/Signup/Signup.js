@@ -21,12 +21,12 @@ class SignUp extends React.Component {
 
     handleRegister = () => {
         if (this.state.email && this.state.username && this.state.password){
-            axios.post('localhost:4000/api/v1/users', {
+            axios.post('http://localhost:4000/api/v1/register', {
                 email: this.state.email,
                 username: this.state.username,
                 password: this.state.password,
             })
-            .then((res) => {res.status(200)})
+            .then((res) => console.log(res))
             .catch((err) => {console.log(err)})
         } else{
             let email = document.querySelector('#regEmail')

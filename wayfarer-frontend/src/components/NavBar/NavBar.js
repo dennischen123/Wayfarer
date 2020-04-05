@@ -9,6 +9,14 @@ export default class NavBar extends React.Component {
     state = {
         signInModalStatus : false,
         registerModalStatus : false,
+        loggedIn: false,
+    }
+
+    signedIn = () => {
+        console.log("logged in")
+        // this.setState({
+        //     loggedIn : this.state.loggedIn ? false : true
+        // })
     }
 
     signInModalClicked = () => {
@@ -30,22 +38,31 @@ export default class NavBar extends React.Component {
                 <ul className="nav" id="myTab" role="tablist">
                     <li className="nav-item">
                         <Link className="nav-link" to={'/'}>Home </Link>
-                    </li>                    
-                    <li className="nav-item">
-                        <Link className="nav-link" to={'/profile'}>Profile</Link>
                     </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to={'/'}>Log Out </Link>
-                    </li>
+                    {this.state.loggedIn ? 
+                    <>
+                        <li className="nav-item">
+                            <Link className="nav-link" to={'/profile'}>Profile</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to={'/'}>Log Out </Link>
+                        </li>
+                    </>
+                    :
+                    <>
+                        <li className="nav-item">
+                            <Link className="nav-link" to={'/'} onClick={this.signInModalClicked}>Sign In</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to={'/'} onClick={this.registerModalClicked}>Register</Link>
+                        </li>
+                    </>
+                    }                    
 
-                    <li className="nav-item">
-                        <Link className="nav-link" to={'/'} onClick={this.signInModalClicked}>Sign In</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to={'/'} onClick={this.registerModalClicked}>Register</Link>
-                    </li>
+
+
                 </ul>
-                {this.state.signInModalStatus && <Login signInModalClicked={this.signInModalClicked} signInModalStatus={this.state.signInModalStatus} />}
+                {this.state.signInModalStatus && <Login signInModalClicked={this.signInModalClicked} signInModalStatus={this.state.signInModalStatus} signedIn={this.state.signedIn}/>}
                 {this.state.registerModalStatus && <SignUp registerModalClicked={this.registerModalClicked} registerModalStatus={this.state.registerModalStatus} />}
             </nav>
         );
