@@ -2,6 +2,7 @@ import React from 'react';
 import PostContainer from '../../containers/PostContainer';
 import axios from 'axios';
 import currentUser from '../../api/currentUser';
+import './Profile.css'
 
 export default class Profile extends React.Component {
     state = {
