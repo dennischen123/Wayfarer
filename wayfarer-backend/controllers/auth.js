@@ -6,7 +6,8 @@ const register = (req, res) => {
 
     const newUser = {
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        username: req.body.username
     }
 
     if(!newUser.email || !newUser.password)
@@ -50,7 +51,7 @@ const login = (req, res) => {
     if(!user.email || !user.password)
         return res.sendStatus(400)
 
-    db.User.findOne({username: user.email}, (err, foundUser) => {
+    db.User.findOne({email: user.email}, (err, foundUser) => {
         if(err)
             return res.status(500).json(err)
 
