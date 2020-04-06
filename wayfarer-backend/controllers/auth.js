@@ -5,15 +5,15 @@ const bcrypt = require('bcryptjs')
 const register = (req, res) => {
 
     const newUser = {
-        username: req.body.username,
         email: req.body.email,
+        username: req.body.username,
         password: req.body.password
     }
 
-    if(!newUser.username || !newUser.password)
+    if(!newUser.email || !newUser.password)
         return res.status(400).send('cannot be null')
     
-    db.User.findOne({username: newUser.username}, (err, foundUser) => {
+    db.User.findOne({email: newUser.email}, (err, foundUser) => {
         if(err)
             return res.status(500).json(err)
 
@@ -44,14 +44,14 @@ const register = (req, res) => {
 
 const login = (req, res) => {
     const user = {
-        username: req.body.username,
+        email: req.body.email,
         password: req.body.password
     }
 
-    if(!user.username || !user.password)
+    if(!user.email || !user.password)
         return res.sendStatus(400)
 
-    db.User.findOne({username: user.username}, (err, foundUser) => {
+    db.User.findOne({email: user.email}, (err, foundUser) => {
         if(err)
             return res.status(500).json(err)
 

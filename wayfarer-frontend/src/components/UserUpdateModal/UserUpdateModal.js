@@ -8,38 +8,82 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import currentUser from '../../api/currentUser';
 
 export default class UserUpdateModal extends React.Component {
+    state={
+        username: this.props.user.username,
+        email: this.props.user.email,
+        city: this.props.user.city,
+    }
+
+    handleChange = (event) => {
+        this.setState({
+            [event.target.name] : event.target.value
+        })
+    }
+
+    handleUserUpdate = () => {
+        axios.put(`http://localhost:4000/api/v1/users/${this.props.user._id}`, {
+            email: this.state.email,
+            username: this.state.username,
+            city: this.state.city,
+        })
+        .then((res) => {
+            console.log(res);
+            currentUser.setUser({
+                _id: this.props.user._id,
+                email: this.state.email,
+                username: this.state.username,
+                city: this.state.city,
+                joinDate: this.props.user.joinDate,
+                })
+        
+            this.props.userUpdateModalClicked();
+            
+        })
+        .catch((err) => {console.log(err)})
+    }
+
+   
     render() {
         return(
             <>
-                <Modal show={this.props.signInModalStatus} onHide={this.props.signInModalClicked}>
+                <Modal show={this.props.userUpdateModalStatus} onHide={this.props.userUpdateModalClicked}>
                     <Modal.Header>
-                        <Modal.Title>Sign In</Modal.Title>
+                        <Modal.Title>Profile Update</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <Form>
+                        <Form.Group>
+                                <Form.Label>Username</Form.Label>
+                                <Form.Control
+                                    id="usernameUpdateField"
+                                    type="text" 
+                                    placeholder="Enter new username" 
+                                    name="username" 
+                                    defaultValue={this.state.username} 
+                                    onChange={this.handleChange}/>
+                            </Form.Group>
                             <Form.Group>
                                 <Form.Label>Email address</Form.Label>
                                 <Form.Control
-                                    className=""
-                                    id="emailField"
+
+                                    id="emailUpdateField"
                                     type="email" 
                                     placeholder="Enter email" 
                                     name="email" 
-                                    value={this.state.email} 
+                                    defaultValue={this.state.email} 
                                     onChange={this.handleChange}/>
                                 <Form.Text className="text-muted">
                                     We'll never share your email with anyone else.
                                 </Form.Text>
                             </Form.Group>
                             <Form.Group>
-                                <Form.Label>Password</Form.Label>
+                                <Form.Label>Current City</Form.Label>
                                 <Form.Control 
-                                    id="passwordField"
-                                    className=""
-                                    type="password" 
-                                    name="password" 
-                                    value={this.state.password} 
-                                    placeholder="Password"
+                                    id="city"
+                                    type="text" 
+                                    name="city" 
+                                    defaultValue={this.state.city} 
+                                    placeholder="Enter current city"
                                     onChange={this.handleChange}/>
                             </Form.Group>
                         </Form>
@@ -47,13 +91,13 @@ export default class UserUpdateModal extends React.Component {
                     <Modal.Footer>
                         <Button
                             variant="danger"
-                            onClick={this.props.signInModalClicked} >
+                            onClick={this.props.userUpdateModalClicked} >
                             Cancel
                         </Button>
                         <Button
                             variant="primary"
-                            onClick={this.handleSignIn} >
-                            Login
+                            onClick={this.handleUserUpdate} >
+                            Update
                         </Button>
                     </Modal.Footer>
                 </Modal>

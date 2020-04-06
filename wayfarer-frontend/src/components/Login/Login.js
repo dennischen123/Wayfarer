@@ -1,16 +1,15 @@
 import React from 'react';
 import axios from 'axios';
 import Modal from "react-bootstrap/Modal";
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import "bootstrap/dist/css/bootstrap.min.css";
-// import { Link } from 'react-router-dom';
 import currentUser from '../../api/currentUser';
 
 class Login extends React.Component {
 
     state = {
-        username: '',
+        email: '',
         password: '',
     }
 
@@ -21,10 +20,10 @@ class Login extends React.Component {
     }
 
     handleSignIn = () => {
-        if (this.state.username && this.state.password){
+        if (this.state.email && this.state.password){
             axios.post('http://localhost:4000/api/v1/login', {
                 withCredentials: true,
-                username: this.state.username,
+                email: this.state.email,
                 password: this.state.password
             })
             .then((res) => {
@@ -36,10 +35,10 @@ class Login extends React.Component {
             .catch((err) => {console.log(err)})
         } 
         else {
-            let username = document.querySelector('#usernameField');
+            let email = document.querySelector('#emailField');
             let password = document.querySelector('#passwordField');
 
-            !this.state.username && username.classList.add("alert-danger")
+            !this.state.email && email.classList.add("alert-danger")
             !this.state.password && password.classList.add("alert-danger")
         }
     }
@@ -54,14 +53,14 @@ class Login extends React.Component {
                     <Modal.Body>
                         <Form>
                             <Form.Group>
-                                <Form.Label>Username</Form.Label>
+                                <Form.Label>email</Form.Label>
                                 <Form.Control
                                     className=""
-                                    id="usernameField"
-                                    type="username" 
-                                    placeholder="Enter username" 
-                                    name="username" 
-                                    value={this.state.username} 
+                                    id="emailField"
+                                    type="email" 
+                                    placeholder="Enter email" 
+                                    name="email" 
+                                    value={this.state.email} 
                                     onChange={this.handleChange}/>
                                 <Form.Text className="text-muted">
                                     We'll never share your email with anyone else.
