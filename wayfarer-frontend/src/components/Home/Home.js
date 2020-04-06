@@ -26,7 +26,7 @@ class Home extends React.Component {
     
     render() {
         return (
-            <div>
+            <div className="wrapper">
                 <div className="jumbotron jumbotron-fluid">
                     <div className= "container">
                         <h1 className="display-2 hero-text font-weight-normal">Welcome to Wayfarer!</h1>

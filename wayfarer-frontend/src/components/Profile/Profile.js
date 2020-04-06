@@ -1,12 +1,14 @@
 import React from 'react';
 import PostContainer from '../../containers/PostContainer';
 import axios from 'axios';
+import './Profile.css'
+
 export default class Profile extends React.Component {
     state = {
         user: {
-            name: "",
-            city: "",
-            date: "",
+            name: "Brock",
+            city: "San Francisco",
+            date: "4.5.2020",
         },
         posts: [
         {
@@ -45,14 +47,21 @@ export default class Profile extends React.Component {
         // console.log(user)
 
         return (
-            <div>
-                <h1 className="display-1">Profile Page</h1>
-                <p>Name: {this.state.user.name}</p>
-                <p>Set City: {this.state.user.city} </p>
-                <p>Join Date: {this.state.user.date}</p>
-                <button className="button">Update Profile</button>
-                <PostContainer posts={this.state.posts} user={this.state.user}/>
+            <div className="user-container">
+                <div>
+                    <button className="btn btn-secondary float-right update-btn">Update Profile</button>
+                </div>
+                <div className="user-info w-50 align-content-center text-center">
+                    <img className="rounded-circle profile-image" src="https://placekitten.com/200/200"/>
+                    <h5 className="text-white">{this.state.user.name}</h5>
+                    <h5 className="text-white">{this.state.user.city} </h5>
+                    <h5 className="text-white">{this.state.user.date}</h5>
+                </div>
+                <div className="posts">
+                    <PostContainer posts={this.state.posts} user={this.state.user}/>
+                </div>
             </div>
         );
     }
 }
+

@@ -40,8 +40,8 @@ export default class NavBar extends React.Component {
                 this.state.loggedIn ?
                 <>
                 <Redirect to={this.state.redirect} /> 
-                        <nav className="navbar navbar-light bg-light">
-                            <span className="navbar-brand mb-0 h1">Wayfarer</span>
+                        <nav className="navbar navbar-light navbar-fixed-top">
+                            <span className="navbar-brand mb-0 h1 text-white">WAYFARER</span>
                             <ul className="nav" id="myTab" role="tablist">
                                 <li className="nav-item">
                                     <Link className="nav-link" to={'/'}>Home </Link>
@@ -49,19 +49,19 @@ export default class NavBar extends React.Component {
                                 {this.state.loggedIn ?
                                     <>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to={'/profile'}>Profile</Link>
+                                            <Link className="nav-link text-white" to={'/profile'}>Profile</Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link onClick={this.signedIn} className="nav-link" to={'/'}>Log Out </Link>
+                                            <Link onClick={this.signedIn} className="nav-link text-white" to={'/'}>Log Out </Link>
                                         </li>
                                     </>
                                     :
                                     <>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to={'/'} onClick={this.signInModalClicked}>Sign In</Link>
+                                            <Link className="nav-link text-white" to={'/'} onClick={this.signInModalClicked}>Sign In</Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to={'/'} onClick={this.registerModalClicked}>Register</Link>
+                                            <Link className="nav-link text-white" to={'/'} onClick={this.registerModalClicked}>Register</Link>
                                         </li>
                                     </>
                                 }
@@ -71,28 +71,28 @@ export default class NavBar extends React.Component {
                         </nav> 
                         </>
                 :
-                    <nav className="navbar navbar-light bg-light">
-                        <span className="navbar-brand mb-0 h1">Wayfarer</span>
+                    <nav className="navbar navbar-light navbar-fixed-top">
+                        <span className="navbar-brand mb-0 h1 text-white">WAYFARER</span>
                         <ul className="nav" id="myTab" role="tablist">
                             <li className="nav-item">
-                                <Link className="nav-link" to={'/'}>Home </Link>
+                                <Link className="nav-link text-white" to={'/'}>Home </Link>
                             </li>
                             {this.state.loggedIn ?
                                 <>
                                     <li className="nav-item">
-                                        <Link className="nav-link" to={'/profile'}>Profile</Link>
+                                        <Link className="nav-link text-white" to={'/profile'}>Profile</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className="nav-link" to={'/'}>Log Out </Link>
+                                        <Link className="nav-link text-white" to={'/'}>Log Out </Link>
                                     </li>
                                 </>
                                 :
                                 <>
                                     <li className="nav-item">
-                                        <Link className="nav-link" to={'/'} onClick={this.signInModalClicked}>Sign In</Link>
+                                        <Link className="nav-link text-white" to={'/'} onClick={this.signInModalClicked}>Sign In</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className="nav-link" to={'/'} onClick={this.registerModalClicked}>Register</Link>
+                                        <Link className="nav-link text-white" to={'/'} onClick={this.registerModalClicked}>Register</Link>
                                     </li>
                                 </>
                             }
