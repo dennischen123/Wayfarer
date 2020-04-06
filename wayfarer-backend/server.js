@@ -21,11 +21,7 @@ const corsOptions = {
     origin: ['http://localhost:3000'],
     methods: "GET,POST,PUT,DELETE",
     credentials: true, 
-<<<<<<< HEAD
-    optionsSuccessStatus: 200,
-=======
     optionsSuccessStatus: 200
->>>>>>> d83a3910d99b0c7d6b0946a84c95f2c601243a5f
 }
 
 
