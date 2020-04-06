@@ -11,7 +11,7 @@ export default class UserUpdateModal extends React.Component {
     state={
         username: this.props.user.username,
         email: this.props.user.email,
-        city: this.props.user.city,
+        city: this.props.user.currentCity,
     }
 
     handleChange = (event) => {
@@ -24,7 +24,7 @@ export default class UserUpdateModal extends React.Component {
         axios.put(`http://localhost:4000/api/v1/users/${this.props.user._id}`, {
             email: this.state.email,
             username: this.state.username,
-            city: this.state.city,
+            currentCity: this.state.city,
         })
         .then((res) => {
             console.log(res);
@@ -32,7 +32,7 @@ export default class UserUpdateModal extends React.Component {
                 _id: this.props.user._id,
                 email: this.state.email,
                 username: this.state.username,
-                city: this.state.city,
+                currentCity: this.state.city,
                 joinDate: this.props.user.joinDate,
                 })
         
@@ -82,7 +82,7 @@ export default class UserUpdateModal extends React.Component {
                                     id="city"
                                     type="text" 
                                     name="city" 
-                                    defaultValue={this.state.city} 
+                                    defaultValue={this.state.currentCity} 
                                     placeholder="Enter current city"
                                     onChange={this.handleChange}/>
                             </Form.Group>
