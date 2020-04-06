@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const PostSchema = new Schema({
     title: String,
     content: String,
-    // TODO add reference to author
+    authorId: String,
+    cityId: String
     // BONUS Timestamp
 })
 
