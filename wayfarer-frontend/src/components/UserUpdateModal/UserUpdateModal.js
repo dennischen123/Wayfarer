@@ -7,43 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // import { Link } from 'react-router-dom';
 import currentUser from '../../api/currentUser';
 
-class Login extends React.Component {
-
-    state = {
-        username: '',
-        password: '',
-    }
-
-    handleChange = (event) => {
-        this.setState({
-            [event.target.name] : event.target.value
-        })
-    }
-
-    handleSignIn = () => {
-        if (this.state.username && this.state.password){
-            axios.post('http://localhost:4000/api/v1/login', {
-                withCredentials: true,
-                username: this.state.username,
-                password: this.state.password
-            })
-            .then((res) => {
-
-                currentUser.setUser(res.data);
-                this.props.signedIn();
-                this.props.signInModalClicked();
-            })
-            .catch((err) => {console.log(err)})
-        } 
-        else {
-            let username = document.querySelector('#usernameField');
-            let password = document.querySelector('#passwordField');
-
-            !this.state.username && username.classList.add("alert-danger")
-            !this.state.password && password.classList.add("alert-danger")
-        }
-    }
-
+export default class UserUpdateModal extends React.Component {
     render() {
         return(
             <>
@@ -54,14 +18,14 @@ class Login extends React.Component {
                     <Modal.Body>
                         <Form>
                             <Form.Group>
-                                <Form.Label>Username</Form.Label>
+                                <Form.Label>Email address</Form.Label>
                                 <Form.Control
                                     className=""
-                                    id="usernameField"
-                                    type="username" 
-                                    placeholder="Enter username" 
-                                    name="username" 
-                                    value={this.state.username} 
+                                    id="emailField"
+                                    type="email" 
+                                    placeholder="Enter email" 
+                                    name="email" 
+                                    value={this.state.email} 
                                     onChange={this.handleChange}/>
                                 <Form.Text className="text-muted">
                                     We'll never share your email with anyone else.
@@ -97,6 +61,5 @@ class Login extends React.Component {
         )
     }
 
-};
+}
 
-export default Login
