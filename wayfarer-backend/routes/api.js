@@ -10,6 +10,7 @@ router.put('/users/:id', ctrl.users.update);
 router.delete('/users/:id', ctrl.users.destroy);
 
 router.get('/posts', ctrl.posts.index);
+router.get('/users/:id/posts', ctrl.posts.userPostIndex);
 router.get('/posts/:id', ctrl.posts.show);
 router.post('/posts', ctrl.posts.create);
 router.put('/posts/:id', ctrl.posts.update);

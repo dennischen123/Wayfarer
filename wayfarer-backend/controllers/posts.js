@@ -6,7 +6,17 @@ const index = async (req, res) => {
         if (!posts) res.status(404).json({error: 'No posts found.'});
         res.json(posts);
     } catch (err) {
-        res.status(500).json('something went wrong');
+        res.status(500).json('Something went wrong.');
+    }
+}
+
+const userPostIndex = async (req, res) => {
+    try {
+        const userPosts = await db.Post.find({authorId:req.params.id});
+        if (!userPosts) res.status(404).json({error: 'No posts found by that user.'});
+        res.json(userPosts);
+    } catch (err) {
+        res.status(500).json('Something went wrong.');
     }
 }
 
@@ -20,7 +30,7 @@ const show = async (req, res) => {
     }
 }
 
-const create = async (req, res) => {
+const create = async (req, res) => { 
     try {
         const newPost = await db.Post.create(req.body);
         if (!newPost) res.status(404).json({error: 'Post could not be created.'});
@@ -53,6 +63,7 @@ const destroy = async (req, res) => {
 
 module.exports = {
     index, 
+    userPostIndex,
     show, 
     create, 
     update,
