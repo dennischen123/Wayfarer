@@ -62,7 +62,8 @@ const login = (req, res) => {
         bcrypt.compare(user.password, foundUser.password, (err, match) => {
             if(match) {
                 req.session.currentUser = {id: foundUser._id}
-                res.status(200).send('success')
+                res.json(foundUser);
+                // res.status(200).send('success')
             } else {
                 res.sendStatus(400)
             }
@@ -82,6 +83,7 @@ const logout = (req, res) => {
 const findUser = (req, res) => {
     if(!req.session.currentUser)
         return res.status(401).send('unauthorized');
+        // return res.json(req.session.currentUser.data);
 
     db.User.findById(req.session.currentUser.id, (err, foundUser) => {
         res.json(foundUser)

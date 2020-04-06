@@ -6,7 +6,7 @@ class Header extends React.Component {
     render() {
         return (
             <header>
-                <NavBar />
+                <NavBar setUser={this.props.setUser}/>
             </header>
         );
     }

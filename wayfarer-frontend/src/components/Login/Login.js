@@ -4,6 +4,8 @@ import Modal from "react-bootstrap/Modal";
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import "bootstrap/dist/css/bootstrap.min.css";
+// import { Link } from 'react-router-dom';
+import currentUser from '../../api/currentUser';
 
 class Login extends React.Component {
 
@@ -21,10 +23,16 @@ class Login extends React.Component {
     handleSignIn = () => {
         if (this.state.email && this.state.password){
             axios.post('http://localhost:4000/api/v1/login', {
+                withCredentials: true,
                 email: this.state.email,
                 password: this.state.password
             })
-            .then((res) => this.props.signedIn)
+            .then((res) => {
+
+                currentUser.setUser(res.data);
+                this.props.signedIn();
+                this.props.signInModalClicked();
+            })
             .catch((err) => {console.log(err)})
         } 
         else {
