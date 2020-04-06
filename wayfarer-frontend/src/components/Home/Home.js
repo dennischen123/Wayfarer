@@ -1,6 +1,8 @@
 import React from 'react';
 import About from  '../About/About'
 // import Login from '../Login/Login'
+import hero from '../../images/chicago.jpeg'
+import './Home.css'
 
 class Home extends React.Component {
     state = {
@@ -22,9 +24,12 @@ class Home extends React.Component {
     
     render() {
         return (
-            <div>
-                <h1>Home Page</h1>
-                <img src="https://placebear.com/800/300" alt=""></img>
+            <div className="wrapper">
+                <div className="jumbotron jumbotron-fluid">
+                    <div className= "container">
+                        <h1 className="display-2 hero-text font-weight-normal">Welcome to Wayfarer!</h1>
+                    </div>
+                </div>
                 <About />
             </div>
         );

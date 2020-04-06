@@ -1,10 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import Modal from "react-bootstrap/Modal";
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import "bootstrap/dist/css/bootstrap.min.css";
-// import { Link } from 'react-router-dom';
 import currentUser from '../../api/currentUser';
 
 class Login extends React.Component {

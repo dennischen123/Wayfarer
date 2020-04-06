@@ -1,14 +1,15 @@
 import React from 'react';
 import PostContainer from '../../containers/PostContainer';
-// import axios from 'axios';
+import axios from 'axios';
 import currentUser from '../../api/currentUser';
+import './Profile.css'
 
 export default class Profile extends React.Component {
     state = {
         user: {
-            name: "",
-            city: "",
-            date: "",
+            name: "Brock",
+            city: "San Francisco",
+            date: "4.5.2020",
         },
         // user = Session,
         posts: [
@@ -53,14 +54,21 @@ export default class Profile extends React.Component {
         let user = currentUser.getUser();
 
         return (
-            <div>
-                <h1>Profile Page</h1>
-                <p>Name: {user.username}</p>
-                <p>Set City: {user.city} </p>
-                <p>Join Date: {user.joinDate && user.joinDate.substring(0,10)}</p>
-                <button className="button">Update Profile</button>
-                <PostContainer posts={this.state.posts} user={this.state.user}/>
+            <div className="user-container">
+                <div>
+                    <button className="btn btn-secondary float-right update-btn">Update Profile</button>
+                </div>
+                <div className="user-info w-50 align-content-center text-center">
+                    <img className="rounded-circle profile-image" src="https://placekitten.com/200/200"/>
+                    <h5 className="text-white">{user.username}</h5>
+                    <h5 className="text-white">{user.city} </h5>
+                    <h5 className="text-white">{user.joinDate && user.joinDate.substring(0,10)}</h5>
+                </div>
+                <div className="posts">
+                    <PostContainer posts={this.state.posts} user={this.state.user}/>
+                </div>
             </div>
         );
     }
 }
+
