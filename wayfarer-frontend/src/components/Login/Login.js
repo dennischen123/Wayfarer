@@ -40,8 +40,6 @@ class Login extends React.Component {
 
             !this.state.email && email.classList.add("alert-danger")
             !this.state.password && password.classList.add("alert-danger")
-            console.log(email)
-            console.log(password)
         }
     }
 
@@ -55,7 +53,7 @@ class Login extends React.Component {
                     <Modal.Body>
                         <Form>
                             <Form.Group>
-                                <Form.Label>Email address</Form.Label>
+                                <Form.Label>email</Form.Label>
                                 <Form.Control
                                     className=""
                                     id="emailField"

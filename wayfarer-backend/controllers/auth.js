@@ -6,8 +6,8 @@ const register = (req, res) => {
 
     const newUser = {
         email: req.body.email,
-        password: req.body.password,
-        username: req.body.username
+        username: req.body.username,
+        password: req.body.password
     }
 
     if(!newUser.email || !newUser.password)
