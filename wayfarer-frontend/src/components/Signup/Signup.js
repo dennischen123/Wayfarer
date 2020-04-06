@@ -21,7 +21,7 @@ class SignUp extends React.Component {
 
     handleRegister = () => {
         if (this.state.email && this.state.username && this.state.password){
-            axios.post('localhost:4000/api/v1/users', {
+            axios.post('http://localhost:4000/api/v1/register', {
                 email: this.state.email,
                 username: this.state.username,
                 password: this.state.password,
