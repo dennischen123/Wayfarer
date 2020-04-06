@@ -26,7 +26,11 @@ class SignUp extends React.Component {
                 username: this.state.username,
                 password: this.state.password,
             })
-            .then((res) => {res.status(200)})
+            .then((res) => {
+                console.log(res);
+                this.props.registerModalClicked();
+                
+            })
             .catch((err) => {console.log(err)})
         } else{
             let email = document.querySelector('#regEmail')

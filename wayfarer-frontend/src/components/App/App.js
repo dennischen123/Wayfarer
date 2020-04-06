@@ -3,13 +3,16 @@ import './App.css';
 import Header from '../../layout/Header/Header';
 import routes from '../../config/routes';
 
-function App() {
-  return (
-    <div className="App">
-      <Header />
-      {routes}
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <div className="App">
+        <Header setUser={this.setUser}/>
+        {routes}
+      </div>
+    );
+  }
+  
 }
 
 export default App;
