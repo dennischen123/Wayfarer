@@ -22,7 +22,6 @@ const corsOptions = {
     methods: "GET,POST,PUT,DELETE",
     credentials: true, 
     optionsSuccessStatus: 200
-
 }
 
 
