@@ -5,12 +5,14 @@ const bcrypt = require('bcryptjs')
 const register = (req, res) => {
 
     const newUser = {
+        email: req.body.email,
         username: req.body.username,
         password: req.body.password
     }
 
-    if(!newUser.username || !newUser.password)
+    if(!newUser.username || !newUser.password || !newUser.email)
         return res.status(400).send('cannot be null')
+
     
     db.User.findOne({username: newUser.username}, (err, foundUser) => {
         if(err)
@@ -43,14 +45,14 @@ const register = (req, res) => {
 
 const login = (req, res) => {
     const user = {
-        username: req.body.username,
+        email: req.body.email,
         password: req.body.password
     }
 
-    if(!user.username || !user.password)
+    if(!user.email || !user.password)
         return res.sendStatus(400)
 
-    db.User.findOne({username: user.username}, (err, foundUser) => {
+    db.User.findOne({email: user.email}, (err, foundUser) => {
         if(err)
             return res.status(500).json(err)
 
@@ -60,6 +62,7 @@ const login = (req, res) => {
         bcrypt.compare(user.password, foundUser.password, (err, match) => {
             if(match) {
                 req.session.currentUser = {id: foundUser._id}
+                // res.json(req.session.currentUser);
                 res.status(200).send('success')
             } else {
                 res.sendStatus(400)
@@ -80,6 +83,7 @@ const logout = (req, res) => {
 const findUser = (req, res) => {
     if(!req.session.currentUser)
         return res.status(401).send('unauthorized');
+        // return res.json(req.session.currentUser.data);
 
     db.User.findById(req.session.currentUser.id, (err, foundUser) => {
         res.json(foundUser)

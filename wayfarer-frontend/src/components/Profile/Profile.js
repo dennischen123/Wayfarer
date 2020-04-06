@@ -1,12 +1,12 @@
 import React from 'react';
 import PostContainer from '../../containers/PostContainer';
-
+import axios from 'axios';
 export default class Profile extends React.Component {
     state = {
         user: {
-            name: "dennis",
-            city: "san francisco",
-            date: "2/22/2020",
+            name: "",
+            city: "",
+            date: "",
         },
         posts: [
         {
@@ -20,9 +20,30 @@ export default class Profile extends React.Component {
             content: "post2 content"        
         }],
     }
+    componentDidMount = () => {
+        axios.get('http://localhost:4000/api/v1/user', {
+            withCredentials: true
+        })
+            .then((res) => {
+                console.log(res.data)
+            })
+            .catch(err => console.log(err))
+    } 
+    // getUser = () => {
+    //     axios.get('http://localhost:4000/api/v1/user', {
+    //         withCredentials: true
+    //     })
+    //     .then((res) => {
+    //         console.log(res.data)
+    //     })
+    //     .catch(err => console.log(err))
 
+    // }
 
     render() {
+        // let user = this.getUser();
+        // console.log(user)
+
         return (
             <div>
                 <h1 className="display-1">Profile Page</h1>
