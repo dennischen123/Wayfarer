@@ -1,11 +1,11 @@
-let currentUser = (function () {
+const currentUser = (function () {
     let user = {};
 
-    let getUser = function () {
+    const getUser = () => {
         return user;
     };
 
-    let setUser = function (data) {
+    const setUser = (data) => {
         user = data;
     };
 
