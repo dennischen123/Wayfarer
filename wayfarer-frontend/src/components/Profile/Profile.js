@@ -1,7 +1,7 @@
 import React from 'react';
 import PostContainer from '../../containers/PostContainer';
 import axios from 'axios';
-import './Profile.css'
+import currentUser from '../../api/currentUser';
 
 export default class Profile extends React.Component {
     state = {
@@ -10,6 +10,7 @@ export default class Profile extends React.Component {
             city: "San Francisco",
             date: "4.5.2020",
         },
+        // user = Session,
         posts: [
         {
             id: "asd1123asd",
@@ -22,15 +23,21 @@ export default class Profile extends React.Component {
             content: "post2 content"        
         }],
     }
-    componentDidMount = () => {
-        axios.get('http://localhost:4000/api/v1/user', {
-            withCredentials: true
-        })
-            .then((res) => {
-                console.log(res.data)
-            })
-            .catch(err => console.log(err))
-    } 
+
+    // getUser = (data) => {
+    //     set.state({
+    //         user: data,
+    //     })
+    // }
+    // componentDidMount = () => {
+    //     axios.get('http://localhost:4000/api/v1/users', {
+    //         withCredentials: true
+    //     })
+    //         .then((res) => {
+    //             console.log(res.data)
+    //         })
+    //         .catch(err => console.log(err))
+    // } 
     // getUser = () => {
     //     axios.get('http://localhost:4000/api/v1/user', {
     //         withCredentials: true
@@ -43,8 +50,7 @@ export default class Profile extends React.Component {
     // }
 
     render() {
-        // let user = this.getUser();
-        // console.log(user)
+        let user = currentUser.getUser();
 
         return (
             <div className="user-container">
@@ -53,9 +59,9 @@ export default class Profile extends React.Component {
                 </div>
                 <div className="user-info w-50 align-content-center text-center">
                     <img className="rounded-circle profile-image" src="https://placekitten.com/200/200"/>
-                    <h5 className="text-white">{this.state.user.name}</h5>
-                    <h5 className="text-white">{this.state.user.city} </h5>
-                    <h5 className="text-white">{this.state.user.date}</h5>
+                    <h5 className="text-white">{user.username}</h5>
+                    <h5 className="text-white">{user.city} </h5>
+                    <h5 className="text-white">{user.joinDate && user.joinDate.substring(0,10)}</h5>
                 </div>
                 <div className="posts">
                     <PostContainer posts={this.state.posts} user={this.state.user}/>

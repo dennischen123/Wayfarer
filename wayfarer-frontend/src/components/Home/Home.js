@@ -1,8 +1,6 @@
 import React from 'react';
 import About from  '../About/About'
-import Login from '../Login/Login'
-import hero from '../../images/chicago.jpeg'
-import './Home.css'
+// import Login from '../Login/Login'
 
 class Home extends React.Component {
     state = {
@@ -21,8 +19,6 @@ class Home extends React.Component {
             registerModalStatus : this.state.registerModalStatus ? false : true,
         })
     }
-    
-    
     
     render() {
         return (
