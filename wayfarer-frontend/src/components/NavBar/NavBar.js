@@ -3,7 +3,7 @@ import Login from '../Login/Login';
 import SignUp from '../Signup/Signup';
 // import Signup from '../Signup/Signup';
 // import Profile from '../Profile/Profile';
-import { Link, useHistory, Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 export default class NavBar extends React.Component {
     state = {
@@ -96,7 +96,7 @@ export default class NavBar extends React.Component {
                                 </>
                             }
                         </ul>
-                        {this.state.signInModalStatus && <Login signInModalClicked={this.signInModalClicked} signInModalStatus={this.state.signInModalStatus} signedIn={this.signedIn}/>}
+                        {this.state.signInModalStatus && <Login signInModalClicked={this.signInModalClicked} signInModalStatus={this.state.signInModalStatus} signedIn={this.signedIn} setUser={this.props.setUser}/>}
                         {this.state.registerModalStatus && <SignUp registerModalClicked={this.registerModalClicked} registerModalStatus={this.state.registerModalStatus} />}
                     </nav> 
             }

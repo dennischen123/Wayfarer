@@ -1,6 +1,8 @@
 import React from 'react';
 import PostContainer from '../../containers/PostContainer';
-import axios from 'axios';
+// import axios from 'axios';
+import currentUser from '../../api/currentUser';
+
 export default class Profile extends React.Component {
     state = {
         user: {
@@ -8,6 +10,7 @@ export default class Profile extends React.Component {
             city: "",
             date: "",
         },
+        // user = Session,
         posts: [
         {
             id: "asd1123asd",
@@ -20,15 +23,21 @@ export default class Profile extends React.Component {
             content: "post2 content"        
         }],
     }
-    componentDidMount = () => {
-        axios.get('http://localhost:4000/api/v1/user', {
-            withCredentials: true
-        })
-            .then((res) => {
-                console.log(res.data)
-            })
-            .catch(err => console.log(err))
-    } 
+
+    // getUser = (data) => {
+    //     set.state({
+    //         user: data,
+    //     })
+    // }
+    // componentDidMount = () => {
+    //     axios.get('http://localhost:4000/api/v1/users', {
+    //         withCredentials: true
+    //     })
+    //         .then((res) => {
+    //             console.log(res.data)
+    //         })
+    //         .catch(err => console.log(err))
+    // } 
     // getUser = () => {
     //     axios.get('http://localhost:4000/api/v1/user', {
     //         withCredentials: true
@@ -41,15 +50,14 @@ export default class Profile extends React.Component {
     // }
 
     render() {
-        // let user = this.getUser();
-        // console.log(user)
+        let user = currentUser.getUser();
 
         return (
             <div>
                 <h1>Profile Page</h1>
-                <p>Name: {this.state.user.name}</p>
-                <p>Set City: {this.state.user.city} </p>
-                <p>Join Date: {this.state.user.date}</p>
+                <p>Name: {user.username}</p>
+                <p>Set City: {user.city} </p>
+                <p>Join Date: {user.joinDate && user.joinDate.substring(0,10)}</p>
                 <button className="button">Update Profile</button>
                 <PostContainer posts={this.state.posts} user={this.state.user}/>
             </div>

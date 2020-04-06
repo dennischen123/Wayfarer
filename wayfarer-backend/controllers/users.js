@@ -14,7 +14,7 @@ const show = async (req, res) => {
     try {
         const user = await db.User.findById(req.params.id);
         if(!user) res.status(404).json({error: "No users found with that ID."});
-        res.json(users);
+        res.json(user);
     } catch (err) {
         res.status(500).json(err);
     }
