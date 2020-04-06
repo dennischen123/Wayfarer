@@ -11,7 +11,7 @@ export default class UserUpdateModal extends React.Component {
     state={
         username: this.props.user.username,
         email: this.props.user.email,
-        city: this.props.user.city,
+        city: this.props.user.currentCity,
     }
 
     handleChange = (event) => {
@@ -82,7 +82,7 @@ export default class UserUpdateModal extends React.Component {
                                     id="city"
                                     type="text" 
                                     name="city" 
-                                    defaultValue={this.state.city} 
+                                    defaultValue={this.state.currentCity} 
                                     placeholder="Enter current city"
                                     onChange={this.handleChange}/>
                             </Form.Group>
