@@ -5,7 +5,6 @@ export default class City extends React.Component {
         return (
             <div className="accordion" id="profilePosts">
                <h1>Test City</h1>
-               
             </div>
         );
     }
