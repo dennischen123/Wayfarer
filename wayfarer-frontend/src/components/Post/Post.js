@@ -1,6 +1,11 @@
 import React from 'react';
 
 export default class Post extends React.Component {
+    //
+    handleDelete = () => {
+        this.props.deletePostClicked(this.props.post._id)
+    }
+    //
     render() {
         return (
             <div className="accordion Post" id="profilePosts">

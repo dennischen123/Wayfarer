@@ -18,7 +18,10 @@ export default class PostContainer extends React.Component {
         // let posts = currentUser.getPosts();
         // if (posts)
             // posts = posts.map((post) => { return <Post post={post} key={post._id} /> })
-        let posts = this.props.posts.map((post) => { return <Post post={post} key={post._id} /> })
+
+        //
+        let posts = this.props.posts.map((post) => { return <Post post={post} key={post._id} deletePostClicked={this.props.deletePostClicked}/> })
+        //
         return (
             <div className="PostContainer container">
                 {(posts.length > 1)
