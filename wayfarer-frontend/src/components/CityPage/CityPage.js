@@ -1,16 +1,29 @@
 import React from 'react';
 import PostContainer from '../../containers/PostContainer';
 import CityContainer from '../../containers/CityContainer';
-import currentUser from '../../api/currentUser';
+// import currentUser from '../../api/currentUser';
 import CityHeading from '../CityHeading/CityHeading';
+// import PostUpdateModal from '../PostUpdateModal/PostUpdateModal';
 import axios from 'axios';
 
 export default class CityPage extends React.Component {
     state = {
-        currentCityId: "",
-        currentCityPosts: [],
+        currentCityId: "5e8ce960b8fab90867a17bf4",
+        // currentCityPosts: [],
+        currentCityPosts: [
+            {
+                _id: "5e8d022569265e15884e3c53",
+                title: "post1",
+                content: "post 1 content"
+            },
+            {
+                _id: "5e8ceb0ab8fab90867a17bf7",
+                title: "post2",
+                content: "post 2 content"
+            },
+        ],
         //
-        postEditClicked: false,
+        postUpdateClicked: false,
         //
         cityClickedPosts: [{
             _id: "2A123sx2341",
@@ -24,7 +37,7 @@ export default class CityPage extends React.Component {
             },],
         cities : [
             {
-                _id: "3A123xdf2341",
+                _id: "5e8ce960b8fab90867a17bf4",
                 name: "San Francisco",
                 country: "United States",
                 image: "",
@@ -50,36 +63,46 @@ export default class CityPage extends React.Component {
             }],
         posts : [
             {
-                _id: "2A123sx2341",
-                title:"title",
-                content:"content"
+                _id: "5e8ce9b4b8fab90867a17bf5",
+                title:"post1",
+                content:"post 1 content"
             },
             {
-                _id: "2A123sx2341",
-                title:"title",
-                content:"content"
+                _id: "5e8cea26b8fab90867a17bf6",
+                title:"post2",
+                content:"post 2 content"
             },
-            {
-                _id: "3A123sx341",
-                title:"title2",
-                content:"content2"
-            }]
+        ]
     }
 
     cityOnClick = (event) => {
-        this.setState({
-            currentCityId: event.target.id
-        })
+        console.log(event.target.id)
+        let id = event.target.id;
+        axios.get(`http://localhost:4000/api/v1//cities/${id}/posts`)
+            .then((res) => {
+                console.log(res.data)
+            })
+        .catch(err => console.log(err))
+        // this.setState({
+        //     currentCityId: event.target.id
+        // })
         // console.log(event.target.id)
     }
 //
+    handlePostEdit = () => {
+        // console.log("post edit clicked")
+        this.setState({
+            postUpdateClicked: this.state.postUpdateClicked ? false : true
+        })
+    }
+
     deletePostClicked = (id) => {
         //make http request to delete post from db
         axios.delete(`http://localhost:4000/api/v1/posts/${id}`)
             .then((res) => {
                 console.log(res.data, "post delete")
                  //remove post from state.currentCityPost
-                let updatedPosts = this.state.currentCityPosts.filter((post) => post._id != id)
+                let updatedPosts = this.state.currentCityPosts.filter((post) => post._id !== id)
                 //set state with new posts[] 
                 this.setState({
                     currentCityPosts: updatedPosts
@@ -91,7 +114,7 @@ export default class CityPage extends React.Component {
 
     editPostClicked = (id, body) => {
         //find index of post inside currentCityPosts
-        let index = this.state.currentCityPosts.findIndex(post => post._id == id);
+        let index = this.state.currentCityPosts.findIndex(post => post._id === id);
         //make http request to update post /posts/:id params:body
         axios.put(`http://localhost:4000/api/v1/posts/${id}`, {
             title: body.title,
@@ -129,12 +152,12 @@ export default class CityPage extends React.Component {
                                 <button className="btn btn-primary">add</button>
                             </div>
                             <div className="row h-50">
-                                <PostContainer posts={this.state.currentCityPosts} deletePostClicked={this.deletePostClicked} />
+                                <PostContainer editPostClicked={this.editPostClicked} handlePostEdit={this.handlePostEdit} posts={this.state.currentCityPosts} deletePostClicked={this.deletePostClicked} postUpdateClicked={this.state.postUpdateClicked} />
                             </div>
                         </div>
-
                     </div>
                 </div>
+                {/* {this.state.postUpdateClicked && <PostUpdateModal handlePostEdit={this.handlePostEdit} postUpdateClicked={this.state.postUpdateClicked}/>} */}
             </div>
         );
     }

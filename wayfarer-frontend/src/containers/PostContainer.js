@@ -1,7 +1,7 @@
 import React from 'react';
 import Post from '../components/Post/Post';
-import currentUser from '../api/currentUser';
-import axios from 'axios';
+// import currentUser from '../api/currentUser';
+// import axios from 'axios';
 
 export default class PostContainer extends React.Component {
     
@@ -20,7 +20,13 @@ export default class PostContainer extends React.Component {
             // posts = posts.map((post) => { return <Post post={post} key={post._id} /> })
 
         //
-        let posts = this.props.posts.map((post) => { return <Post post={post} key={post._id} deletePostClicked={this.props.deletePostClicked}/> })
+        let posts = this.props.posts.map((post) => { 
+            return <Post post={post} 
+                        key={post._id} 
+                        deletePostClicked={this.props.deletePostClicked} 
+                        handlePostEdit={this.props.handlePostEdit}
+                        postUpdateClicked={this.props.postUpdateClicked}
+                        editPostClicked={this.props.editPostClicked} /> })
         //
         return (
             <div className="PostContainer container">
