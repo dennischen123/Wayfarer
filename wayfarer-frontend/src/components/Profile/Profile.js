@@ -27,11 +27,14 @@ export default class Profile extends React.Component {
             userUpdateModalStatus : this.state.userUpdateModalStatus ? false : true,
         })
     }
+
+    // getUserPosts = () => {
+    //     axios.get(`http://localhost:4000/api/v1/users/${user.id}/posts'`)
+    // }
     
 
     render() {
         let user = currentUser.getUser();
-
         return (
             <div className="user-container">
                 <div>
