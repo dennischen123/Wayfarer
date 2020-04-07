@@ -1,0 +1,27 @@
+.CityPage {
+
+}
+
+.bg-secondary {
+    background-color: rgb(255, 168, 162) !important;
+    height: 100vh;
+}
+
+.bg-dark {
+    background-color: #85B9CC !important;
+    height: 100vh;
+}
+#postbutton {
+    position: absolute;
+    right: 50px;
+    top: 200px;
+    background-color: rgb(224, 100, 91);
+    box-shadow: #BEFFED 0 0 5px;
+    border: none;
+}
+#postbutton:hover{
+    box-shadow: #BEFFED 0 0 10px;
+}
+.PostContainer{
+    margin-top: 80px;
+}
