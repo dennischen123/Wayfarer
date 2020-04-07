@@ -80,7 +80,7 @@ export default class UserUpdateModal extends React.Component {
                                     id="city"
                                     type="text" 
                                     name="city" 
-                                    defaultValue={this.state.city} 
+                                    defaultValue={this.state.currentCity} 
                                     placeholder="Enter current city"
                                     onChange={this.handleChange}/>
                             </Form.Group>

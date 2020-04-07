@@ -19,6 +19,15 @@ const userPostIndex = async (req, res) => {
         res.status(500).json('Something went wrong.');
     }
 }
+const cityPostIndex = async (req, res) => {
+    try {
+        const cityPosts = await db.Post.find({authorId:req.params.id});
+        if (!cityPosts) res.status(404).json({error: 'No posts found by that user.'});
+        res.json(cityPosts);
+    } catch (err) {
+        res.status(500).json('Something went wrong.');
+    }
+}
 
 const show = async (req, res) => {
     try {
@@ -64,6 +73,7 @@ const destroy = async (req, res) => {
 module.exports = {
     index, 
     userPostIndex,
+    cityPostIndex,
     show, 
     create, 
     update,
