@@ -3,6 +3,8 @@ import PostContainer from '../../containers/PostContainer';
 import CityContainer from '../../containers/CityContainer';
 import currentUser from '../../api/currentUser';
 import CityHeading from '../CityHeading/CityHeading';
+import './CityPage.css';
+
 
 export default class CityPage extends React.Component {
     state = {
@@ -22,26 +24,26 @@ export default class CityPage extends React.Component {
                 _id: "3A123xdf2341",
                 name: "San Francisco",
                 country: "United States",
-                image: "",
+                image: "images/San-Francisco.jpg",
             },
             {
                 name: "London",
                 country: "United States",
-                image: "",
+                image: "images/London.jpg",
             },
             {
                 _id: "4A123sxdf341",
 
                 name: "Chicago",
                 country: "United States",
-                image: "",
+                image: "images/chicago.jpeg",
             },
             {
                 _id: "1A13sxdf2341",
 
                 name: "Sydney",
                 country: "Australia",
-                image: "",
+                image: "images/Sydney.jpg",
             }],
         posts : [
             {
@@ -67,7 +69,7 @@ export default class CityPage extends React.Component {
 
     render() {
         return (
-            <div className="CityPage container">
+            <div className="CityPage">
                 <h1>City Page</h1>
                 <div className="row">
                     <div className="col-5 bg-dark">
@@ -77,7 +79,7 @@ export default class CityPage extends React.Component {
                     <div className="col-7 bg-secondary">
                         <div className="container d-flex h-100 flex-column">
                             <div className="row h-25">
-                                <CityHeading />
+                                <CityHeading cities={this.state.cities}/>
                             </div>
                             <div className="row h-10">
                                 <button className="btn btn-primary">add</button>

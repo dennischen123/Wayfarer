@@ -11,7 +11,7 @@ export default class CityHeading extends React.Component {
                         <h6>United States</h6>
                     </div>
                     <div className="col-5">
-                        <p>picture goes here</p>
+                    <img class="city-hero" src="http://placebear.com/400/200"></img>
                         </div>
                 </div>
             </div>
