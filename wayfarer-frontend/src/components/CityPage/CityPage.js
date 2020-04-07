@@ -3,6 +3,8 @@ import PostContainer from '../../containers/PostContainer';
 import CityContainer from '../../containers/CityContainer';
 import currentUser from '../../api/currentUser';
 import CityHeading from '../CityHeading/CityHeading';
+import AddPostModal from '../AddPostModal/AddPostModal';
+
 
 export default class CityPage extends React.Component {
     state = {
@@ -59,15 +61,17 @@ export default class CityPage extends React.Component {
                 _id: "3A123sx341",
                 title:"title2",
                 content:"content2"
-            }]
+            }
+        ]
     }
-
+    
     cityOnClick = (event) => {
         this.setState({
             currentCityId: event.target.id
         })
         // console.log(event.target.id)
     }
+
 
     componentDidMount(){
         //get cities from db
@@ -87,14 +91,11 @@ export default class CityPage extends React.Component {
                             <div className="row h-25">
                                 <CityHeading />
                             </div>
-                            <div className="row h-10">
-                                <button className="btn btn-primary">add</button>
-                            </div>
+                                <AddPostModal currentCityId = {this.state.currentCityId} authorId = {currentUser.getUserId()}/>
                             <div className="row h-50">
                                 <PostContainer posts={this.state.currentCityPosts} />
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
