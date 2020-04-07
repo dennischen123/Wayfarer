@@ -3,3 +3,13 @@
     height: 100px;
     border-radius: 50%;
 }
+.City .card-body {
+    background-color: rgb(238, 255, 250);
+}
+
+h5{
+ line-height: 100px;
+ margin-left: 10px;
+ font-family: 'Sen', sans-serif;
+ font-size: 26px;
+}
