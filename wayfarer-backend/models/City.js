@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const CitySchema = new Schema({
     name: String,
+    country: String,
     description: String,
 
 })
