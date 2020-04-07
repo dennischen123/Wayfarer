@@ -54,6 +54,9 @@ export default class NavBar extends React.Component {
                                         <li className="nav-item">
                                             <Link onClick={this.signedIn} className="nav-link text-white" to={'/'}>Log Out </Link>
                                         </li>
+                                        <li className="nav-item">
+                                            <Link className="nav-link text-white" to={'/cities'}>Cities</Link>
+                                        </li>
                                     </>
                                     :
                                     <>
@@ -63,6 +66,7 @@ export default class NavBar extends React.Component {
                                         <li className="nav-item">
                                             <Link className="nav-link text-white" to={'/'} onClick={this.registerModalClicked}>Register</Link>
                                         </li>
+
                                     </>
                                 }
                             </ul>
@@ -84,6 +88,9 @@ export default class NavBar extends React.Component {
                                     </li>
                                     <li className="nav-item">
                                         <Link className="nav-link text-white" to={'/'}>Log Out </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link text-white" to={'/cities'}>Cities</Link>
                                     </li>
                                 </>
                                 :

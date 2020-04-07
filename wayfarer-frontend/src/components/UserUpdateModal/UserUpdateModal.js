@@ -35,9 +35,7 @@ export default class UserUpdateModal extends React.Component {
                 currentCity: this.state.city,
                 joinDate: this.props.user.joinDate,
                 })
-        
-            this.props.userUpdateModalClicked();
-            
+            this.props.userUpdateModalClicked()
         })
         .catch((err) => {console.log(err)})
     }
