@@ -6,7 +6,8 @@ import CityHeading from '../CityHeading/CityHeading';
 
 export default class CityPage extends React.Component {
     state = {
-        cityClicked: "3A123xdf2341",
+        currentCityId: "",
+        currentCityPosts: [],
         cityClickedPosts: [{
             _id: "2A123sx2341",
             title: "title",
@@ -25,13 +26,13 @@ export default class CityPage extends React.Component {
                 image: "",
             },
             {
+                _id: "5A234dsfgsdfd2",
                 name: "London",
                 country: "United States",
                 image: "",
             },
             {
                 _id: "4A123sxdf341",
-
                 name: "Chicago",
                 country: "United States",
                 image: "",
@@ -61,6 +62,13 @@ export default class CityPage extends React.Component {
             }]
     }
 
+    cityOnClick = (event) => {
+        this.setState({
+            currentCityId: event.target.id
+        })
+        // console.log(event.target.id)
+    }
+
     componentDidMount(){
         //get cities from db
     }
@@ -71,7 +79,7 @@ export default class CityPage extends React.Component {
                 <h1>City Page</h1>
                 <div className="row">
                     <div className="col-5 bg-dark">
-                        <CityContainer cities={this.state.cities}/>
+                        <CityContainer cities={this.state.cities} cityOnClick={this.cityOnClick}/>
 
                     </div>
                     <div className="col-7 bg-secondary">
@@ -83,7 +91,7 @@ export default class CityPage extends React.Component {
                                 <button className="btn btn-primary">add</button>
                             </div>
                             <div className="row h-50">
-                                <PostContainer posts={this.state.posts} />
+                                <PostContainer posts={this.state.currentCityPosts} />
                             </div>
                         </div>
 
