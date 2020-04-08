@@ -4,8 +4,6 @@ import Modal from "react-bootstrap/Modal";
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import "bootstrap/dist/css/bootstrap.min.css";
-// import { Link } from 'react-router-dom';
-// import currentUser from '../../api/currentUser';
 
 export default class PostUpdateModal extends React.Component {
     state = {
@@ -13,7 +11,6 @@ export default class PostUpdateModal extends React.Component {
         content: this.props.post.content,
     }
     handlePostUpdate = () => {
-        // this.props.editPostClicked(id, body)
         let updatedPost = this.props.post;
         updatedPost.title = this.state.title;
         updatedPost.content = this.state.content;
@@ -28,55 +25,50 @@ export default class PostUpdateModal extends React.Component {
     }
     
     render() {
-        // console.log(this.props.post)
         return (
-            // <div className="PostUpdateModal">
-                // <>
-                    <Modal show={this.props.postUpdateClicked} onHide={this.props.handlePostEdit}>
-                        <Modal.Header>
-                            <Modal.Title>Post Update</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <Form>
-                                <Form.Group>
-                                    <Form.Label>Title</Form.Label>
-                                    <Form.Control
-                                        id="titleUpdateField"
-                                        type="text"
-                                        placeholder="New Title"
-                                        name="title"
-                                        value={this.state.title}
-                                        onChange={this.handleChange} 
-                                        />
-                                </Form.Group>
-                                <Form.Group>
-                                    <Form.Label>Content</Form.Label>
-                                    <Form.Control
-                                        id="postUpdateField"
-                                        type="text"
-                                        placeholder="New content"
-                                        name="content"
-                                        value={this.state.content}
-                                        onChange={this.handleChange}
-                                        />
-                                </Form.Group>
-                            </Form>
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button
-                                variant="danger"
-                                onClick={this.props.handlePostEdit} >
-                                Cancel
-                        </Button>
-                            <Button
-                                variant="primary"
-                                onClick={this.handlePostUpdate} >
-                                Update
-                        </Button>
-                        </Modal.Footer>
-                    </Modal>
-                // </>
-            // </div>
+            <Modal show={this.props.postUpdateClicked} onHide={this.props.handlePostEdit}>
+                <Modal.Header>
+                    <Modal.Title>Post Update</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form>
+                        <Form.Group>
+                            <Form.Label>Title</Form.Label>
+                            <Form.Control
+                                id="titleUpdateField"
+                                type="text"
+                                placeholder="New Title"
+                                name="title"
+                                value={this.state.title}
+                                onChange={this.handleChange} 
+                                />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Content</Form.Label>
+                            <Form.Control
+                                id="postUpdateField"
+                                type="text"
+                                placeholder="New content"
+                                name="content"
+                                value={this.state.content}
+                                onChange={this.handleChange}
+                                />
+                        </Form.Group>
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button
+                        variant="danger"
+                        onClick={this.props.handlePostEdit} >
+                        Cancel
+                </Button>
+                    <Button
+                        variant="primary"
+                        onClick={this.handlePostUpdate} >
+                        Update
+                </Button>
+                </Modal.Footer>
+            </Modal>
         );
     }
 }

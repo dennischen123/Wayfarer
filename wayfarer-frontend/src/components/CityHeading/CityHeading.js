@@ -10,10 +10,6 @@ export default class CityHeading extends React.Component {
             <div className="CityHeading card-img-top" style={divStyle}>
                 <div className="row">
                     <div className="col-7">
-                        {/* <h4>San Francisco</h4>
-                        <h6>United States</h6>
-                        <h3>City by the Bay</h3> */}
-
                         <h4>{this.props.cities.name}</h4>
                         <h6>{this.props.cities.country}</h6>
                         <h3>{this.props.cities.description}</h3>

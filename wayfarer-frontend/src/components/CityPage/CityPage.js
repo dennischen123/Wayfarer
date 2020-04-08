@@ -5,7 +5,6 @@ import currentUser from '../../api/currentUser';
 import CityHeading from '../CityHeading/CityHeading';
 import AddPostModal from '../AddPostModal/AddPostModal';
 import './CityPage.css';
-// import PostUpdateModal from '../PostUpdateModal/PostUpdateModal';
 import axios from 'axios';
 
 export default class CityPage extends React.Component {
@@ -21,11 +20,9 @@ export default class CityPage extends React.Component {
         let id = event.target.id;
         axios.get(`http://localhost:4000/api/v1/cities/${id}/posts`)
             .then((res) => {
-                console.log(res.data, "post get")
                 let updatedPosts = res.data
                 let currentCity = currentUser.getCities();
                 currentCity = currentCity.filter((city) => city._id == id)
-                console.log(currentCity[0])
                 this.setState({
                     currentCityId: id,
                     currentCityPosts: updatedPosts,
@@ -34,9 +31,8 @@ export default class CityPage extends React.Component {
             })
             .catch(err => console.log(err))
     }
-//
+
     handlePostEdit = () => {
-        // console.log("post edit clicked")
         this.setState({
             postUpdateClicked: this.state.postUpdateClicked ? false : true
         })
@@ -46,7 +42,6 @@ export default class CityPage extends React.Component {
         //make http request to delete post from db
         axios.delete(`http://localhost:4000/api/v1/posts/${id}`)
             .then((res) => {
-                console.log(res.data, "post delete")
                  //remove post from state.currentCityPost
                 let updatedPosts = this.state.currentCityPosts.filter((post) => post._id !== id)
                 //set state with new posts[] 
@@ -56,7 +51,6 @@ export default class CityPage extends React.Component {
             })
             .catch(err => console.log(err))
     }
-//
 
     editPostClicked = (id, body) => {
         //find index of post inside currentCityPosts
@@ -67,7 +61,6 @@ export default class CityPage extends React.Component {
             content: body.content,
         })
         .then((res) => {
-            console.log(res.data);
         //update body with currentCityPosts[index]
             let updatedPost = this.state.currentCityPosts;
             updatedPost[index] = res.data;
@@ -75,9 +68,6 @@ export default class CityPage extends React.Component {
                 currentCityPosts: updatedPost
             })
         })
-    }
-    componentDidMount(){
-        //get cities from db
     }
 
     handleAddPost = (post) => {
@@ -87,8 +77,6 @@ export default class CityPage extends React.Component {
 
 
     render() {
-        console.log(currentUser.getCities())
-       
         return (
             <div className="CityPage container-lg">
                 <div className="row">
@@ -108,7 +96,6 @@ export default class CityPage extends React.Component {
                         </div>
                     </div>
                 </div>
-                {/* {this.state.postUpdateClicked && <PostUpdateModal handlePostEdit={this.handlePostEdit} postUpdateClicked={this.state.postUpdateClicked}/>} */}
             </div>
         );
     }

@@ -22,7 +22,6 @@ class Login extends React.Component {
     getCities = () => {
         axios.get('http://localhost:4000/api/v1/cities')
         .then((res) => {
-            console.log(res.data)
             currentUser.setCities(res.data)
         })
     }

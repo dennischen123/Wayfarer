@@ -4,7 +4,6 @@ import Modal from "react-bootstrap/Modal";
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import "bootstrap/dist/css/bootstrap.min.css";
-// import { Link } from 'react-router-dom';
 import currentUser from '../../api/currentUser';
 
 export default class UserUpdateModal extends React.Component {
@@ -27,7 +26,6 @@ export default class UserUpdateModal extends React.Component {
             currentCity: this.state.city,
         })
         .then((res) => {
-            console.log(res);
             currentUser.setUser({
                 _id: this.props.user._id,
                 email: this.state.email,

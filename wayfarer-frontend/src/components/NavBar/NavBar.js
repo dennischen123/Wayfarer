@@ -2,8 +2,6 @@ import React from 'react';
 import Login from '../Login/Login';
 import SignUp from '../Signup/Signup';
 import './Navbar.css'
-// import Signup from '../Signup/Signup';
-// import Profile from '../Profile/Profile';
 import { Link, Redirect } from 'react-router-dom';
 
 export default class NavBar extends React.Component {
