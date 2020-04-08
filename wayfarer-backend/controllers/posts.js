@@ -21,7 +21,7 @@ const userPostIndex = async (req, res) => {
 }
 const cityPostIndex = async (req, res) => {
     try {
-        const cityPosts = await db.Post.find({authorId:req.params.id});
+        const cityPosts = await db.Post.find({cityId:req.params.id});
         if (!cityPosts) res.status(404).json({error: 'No posts found by that user.'});
         res.json(cityPosts);
     } catch (err) {
