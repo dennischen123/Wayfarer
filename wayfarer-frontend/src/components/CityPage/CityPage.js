@@ -8,19 +8,19 @@ import axios from 'axios';
 
 export default class CityPage extends React.Component {
     state = {
-        currentCityId: "5e8ce960b8fab90867a17bf4",
+        currentCityId: "",
         // currentCityPosts: [],
         currentCityPosts: [
-            {
-                _id: "5e8d022569265e15884e3c53",
-                title: "post1",
-                content: "post 1 content"
-            },
-            {
-                _id: "5e8ceb0ab8fab90867a17bf7",
-                title: "post2",
-                content: "post 2 content"
-            },
+            // {
+            //     _id: "5e8d022569265e15884e3c53",
+            //     title: "post1",
+            //     content: "post 1 content"
+            // },
+            // {
+            //     _id: "5e8ceb0ab8fab90867a17bf7",
+            //     title: "post2",
+            //     content: "post 2 content"
+            // },
         ],
         //
         postUpdateClicked: false,
@@ -74,19 +74,19 @@ export default class CityPage extends React.Component {
             },
         ]
     }
-
+//
     cityOnClick = (event) => {
-        console.log(event.target.id)
         let id = event.target.id;
-        axios.get(`http://localhost:4000/api/v1//cities/${id}/posts`)
+        axios.get(`http://localhost:4000/api/v1/cities/${id}/posts`)
             .then((res) => {
-                console.log(res.data)
+                console.log(res.data, "post get")
+                let updatedPosts = res.data
+                this.setState({
+                    currentCityId: id,
+                    currentCityPosts: updatedPosts
+                })
             })
-        .catch(err => console.log(err))
-        // this.setState({
-        //     currentCityId: event.target.id
-        // })
-        // console.log(event.target.id)
+            .catch(err => console.log(err))
     }
 //
     handlePostEdit = () => {

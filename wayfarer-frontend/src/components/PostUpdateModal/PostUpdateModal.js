@@ -41,11 +41,11 @@ export default class PostUpdateModal extends React.Component {
                                 <Form.Group>
                                     <Form.Label>Title</Form.Label>
                                     <Form.Control
-                                        id="usernameUpdateField"
+                                        id="titleUpdateField"
                                         type="text"
                                         placeholder="New Title"
                                         name="title"
-                                        defaultValue={this.props.post.title}
+                                        value={this.state.title}
                                         onChange={this.handleChange} 
                                         />
                                 </Form.Group>
@@ -56,7 +56,7 @@ export default class PostUpdateModal extends React.Component {
                                         type="text"
                                         placeholder="New content"
                                         name="content"
-                                        defaultValue={this.props.post.content}
+                                        value={this.state.content}
                                         onChange={this.handleChange}
                                         />
                                 </Form.Group>
