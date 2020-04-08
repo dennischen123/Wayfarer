@@ -1,7 +1,7 @@
 import React from 'react';
 import PostContainer from '../../containers/PostContainer';
 import CityContainer from '../../containers/CityContainer';
-// import currentUser from '../../api/currentUser';
+import currentUser from '../../api/currentUser';
 import CityHeading from '../CityHeading/CityHeading';
 import AddPostModal from '../AddPostModal/AddPostModal';
 import './CityPage.css';
