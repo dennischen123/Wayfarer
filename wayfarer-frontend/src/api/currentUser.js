@@ -22,6 +22,7 @@ const currentUser = (function () {
         posts = data;
     }
 
+
     return {
         getUser: getUser,
         setUser: setUser,
