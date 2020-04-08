@@ -36,8 +36,12 @@ export default class AddPostModal extends React.Component {
             authorId: this.props.authorId,
         })
         .then((res) => {
-            console.log(res);
+            console.log(res.data);
             this.addModalClicked();
+            let post = res.data;
+            console.log("post = ", post)
+            this.props.handleAddPost(post);
+            
         })
         .catch((err) => {console.log(err)})
     }
@@ -45,11 +49,15 @@ export default class AddPostModal extends React.Component {
     render() {
         return (
             <div>
-            <div className="row h-10">
-                <button onClick={this.addModalClicked} className="btn btn-primary">add</button>
-            </div>
+            {this.props.currentCityId &&
+                    <> 
+                        <div className="row h-10">
+                            <button onClick={this.addModalClicked} className="btn btn-primary">add</button>
+                        </div>
+                    </>}
+            
                 {this.state.addModalStatus &&  <>
-                    <Modal show={this.state.addModalStatus} onHide={this.state.addModalClicked}>
+                    <Modal show={this.state.addModalStatus} onHide={this.addModalClicked}>
                         <Modal.Header>
                             <Modal.Title>Add Post</Modal.Title>
                         </Modal.Header>

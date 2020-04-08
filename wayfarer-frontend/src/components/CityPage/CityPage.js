@@ -5,7 +5,6 @@ import currentUser from '../../api/currentUser';
 import CityHeading from '../CityHeading/CityHeading';
 import AddPostModal from '../AddPostModal/AddPostModal';
 import './CityPage.css';
-
 // import PostUpdateModal from '../PostUpdateModal/PostUpdateModal';
 import axios from 'axios';
 
@@ -13,18 +12,7 @@ export default class CityPage extends React.Component {
     state = {
         currentCityId: "",
         // currentCityPosts: [],
-        currentCityPosts: [
-            // {
-            //     _id: "5e8d022569265e15884e3c53",
-            //     title: "post1",
-            //     content: "post 1 content"
-            // },
-            // {
-            //     _id: "5e8ceb0ab8fab90867a17bf7",
-            //     title: "post2",
-            //     content: "post 2 content"
-            // },
-        ],
+        currentCityPosts: [],
         //
         postUpdateClicked: false,
         //
@@ -46,48 +34,17 @@ export default class CityPage extends React.Component {
                 image: "images/San-Francisco.jpg",
             },
             {
+                _id: "5e8d24d79e9b6318c004506d",
                 name: "London",
                 country: "United States",
                 image: "images/London.jpg",
             },
             {
-                _id: "4A123sxdf341",
+                _id: "5e8d250a9e9b6318c004506f",
 
                 name: "Chicago",
                 country: "United States",
                 image: "images/chicago.jpeg",
-            },
-            {
-                _id: "1A13sxdf2341",
-
-                name: "Sydney",
-                country: "Australia",
-                image: "images/Sydney.jpg",
-            }, 
-            {
-                _id: "3A123xdf2341",
-                name: "San Francisco",
-                country: "United States",
-                image: "images/San-Francisco.jpg",
-            },
-            {
-                _id: "5A234dsfgsdfd2",
-                name: "London",
-                country: "United States",
-                image: "images/London.jpg",
-            },
-            {
-                _id: "4A123sxdf341",
-                name: "Chicago",
-                country: "United States",
-                image: "images/chicago.jpeg",
-            },
-            {
-                _id: "1A13sxdf2341",
-
-                name: "Sydney",
-                country: "Australia",
-                image: "images/Sydney.jpg",
             }],
         posts : [
             {
@@ -162,12 +119,19 @@ export default class CityPage extends React.Component {
         //get cities from db
     }
 
+    handleAddPost = (post) => {
+        this.state.currentCityPosts.push(post);
+        this.forceUpdate()
+    }
+
+
     render() {
+        console.log(currentUser.getCities())
         return (
             <div className="CityPage container-lg">
                 <div className="row">
                     <div className="col-5 bg-dark overflow-auto">
-                        <CityContainer cities={this.state.cities} cityOnClick={this.cityOnClick}/>
+                        <CityContainer cities={currentUser.getCities()} cityOnClick={this.cityOnClick}/>
 
                     </div>
                     <div className="col-7 bg-secondary overflow-auto">
@@ -175,7 +139,7 @@ export default class CityPage extends React.Component {
                             <div className="row h-25">
                                 <CityHeading cities={this.state.cities}/>
                             </div>
-                                <AddPostModal currentCityId = {this.state.currentCityId} authorId = {currentUser.getUserId()}/>
+                            <AddPostModal currentCityId={this.currentCityId} handleAddPost={this.handleAddPost} currentCityId = {this.state.currentCityId} authorId = {currentUser.getUserId()}/>
                             <div className="row h-50">
                                 <PostContainer editPostClicked={this.editPostClicked} handlePostEdit={this.handlePostEdit} posts={this.state.currentCityPosts} deletePostClicked={this.deletePostClicked} postUpdateClicked={this.state.postUpdateClicked} />
                             </div>
