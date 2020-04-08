@@ -9,17 +9,17 @@ class About extends React.Component {
                 <div className="row">
                     <div className="col-4 card card-bordered">
                         <div className="card-body">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis auctor elit sed vulputate. Gravida cum sociis natoque penatibus. Nam aliquam sem et tortor consequat id porta. Facilisi nullam vehicula ipsum a arcu cursus vitae. Id diam vel quam elementum pulvinar etiam non quam. Vel fringilla est ullamcorper eget nulla facilisi etiam. Lectus vestibulum mattis ullamcorper velit sed.</p>
+                            <p>Have you ever yearned for a place to share your thoughts about the skylines of cities that you've travelled to? What about sharing your thoughts on the skylines you've never seen? </p>
                         </div>
                     </div>
                     <div className="col-4 card card-bordered">
                         <div className="card-body">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis auctor elit sed vulputate. Gravida cum sociis natoque penatibus. Nam aliquam sem et tortor consequat id porta. Facilisi nullam vehicula ipsum a arcu cursus vitae. Id diam vel quam elementum pulvinar etiam non quam. Vel fringilla est ullamcorper eget nulla facilisi etiam. Lectus vestibulum mattis ullamcorper velit sed.</p>
+                            <p>Welcome to Wayfarer. The place to blab about the gorgeous skylines built by our wonderful species.</p>
                         </div>
                     </div>
                     <div className="col-4 card card-bordered">
                         <div className="card-body">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis auctor elit sed vulputate. Gravida cum sociis natoque penatibus. Nam aliquam sem et tortor consequat id porta. Facilisi nullam vehicula ipsum a arcu cursus vitae. Id diam vel quam elementum pulvinar etiam non quam. Vel fringilla est ullamcorper eget nulla facilisi etiam. Lectus vestibulum mattis ullamcorper velit sed.</p>
+                            <p>Sign up to share posts, ideas, thoughts, words, text, and other forms of language related to cities and their skylines.</p>
                         </div>
                     </div>
                 </div>

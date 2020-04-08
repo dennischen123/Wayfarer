@@ -19,6 +19,13 @@ class Login extends React.Component {
         })
     }
 
+    getCities = () => {
+        axios.get('http://localhost:4000/api/v1/cities')
+        .then((res) => {
+            currentUser.setCities(res.data)
+        })
+    }
+
     handleSignIn = () => {
         if (this.state.email && this.state.password){
             axios.post('http://localhost:4000/api/v1/login', {
@@ -31,6 +38,7 @@ class Login extends React.Component {
                 currentUser.setUser(res.data);
                 this.props.signedIn();
                 this.props.signInModalClicked();
+                this.getCities();
             })
             .catch((err) => {console.log(err)})
         } 

@@ -35,7 +35,7 @@ export default class Profile extends React.Component {
                 <div>
                     <button className="btn btn-secondary float-right update-btn" onClick={this.userUpdateModalClicked}>Update Profile</button>
                 </div>
-                <div className="user-info w-50 align-content-center text-center">
+                <div className="user-info w-50 align-content-center text-center overflow-auto">
                     <img className="rounded-circle profile-image" src="https://placekitten.com/200/200"/>
                     <h5 className="text-white">{user.username}</h5>
                     <h5 className="text-white">{user.currentCity} </h5>

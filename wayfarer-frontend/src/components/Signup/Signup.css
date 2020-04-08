@@ -1,0 +1,11 @@
+.btn-primary {
+    background-color: #367F99 !important;
+    border-color: #367F99;
+}
+.btn-danger {
+    background-color:#FF8980 !important;
+    border-color: #FF8980;
+}
+.modal-header {
+    background-color:#367F99 !important;
+}

@@ -1,25 +1,22 @@
 import React from 'react';
+import "./City.css";
 
 export default class City extends React.Component {
 
-    onClick = (event) => {
-        console.log(event.target)
-    }
-
     render() {
         return (
-                <div onClick={this.onClick}className="City card mb-4" value={this.props.city.name}>
-                <div className="card-body" value={this.props.city.name}>
-                            <div className="row">
-                        <div className="col-4" value={this.props.city.name}>
-                                    <p>picture goes here</p>
-                                </div>
-                        <div className="col-7" value={this.props.city.name}>
-                                    <h5>{this.props.city.name}</h5>
-                                </div>
-                            </div>
+            <div className="City card mb-4" id={this.props.city._id} value={this.props.city.name}>
+                <div className="card-body" name={this.props.city} id={this.props.city._id} value={this.props.city.name}>
+                    <div className="row">
+                        <div className="col-4" name={this.props.city} id={this.props.city._id} value={this.props.city.image}>
+                            <img className="city-img" src={`images/${this.props.city.image}`}></img>
                         </div>
+                        <div className="col-7" name={this.props.city} id={this.props.city._id} value={this.props.city.name}>
+                            <h5 onClick={this.props.cityOnClick} id={this.props.city._id}>{this.props.city.name}</h5>
+                        </div>
+                    </div>
                 </div>
+            </div>
         );
     }
 }

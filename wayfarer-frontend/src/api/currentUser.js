@@ -1,6 +1,7 @@
 const currentUser = (function () {
     let user = {};
     let posts = [];
+    let cities = [];
 
     const getUser = () => {
         return user;
@@ -22,12 +23,23 @@ const currentUser = (function () {
         posts = data;
     }
 
+    const setCities = (data) => {
+        cities = data;
+    }
+
+    const getCities = () => {
+        return cities;
+    }
+
+
     return {
         getUser: getUser,
         setUser: setUser,
         getUserId: getUserId,
         getPosts: getPosts,
         setPosts: setPosts,
+        getCities: getCities,
+        setCities: setCities,
     }
 
 })();
