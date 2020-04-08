@@ -5,7 +5,7 @@ const PostSchema = new Schema({
     title: String,
     content: String,
     authorId: String,
-    // cityId: String
+    cityId: String
     // BONUS Timestamp
 })
 
