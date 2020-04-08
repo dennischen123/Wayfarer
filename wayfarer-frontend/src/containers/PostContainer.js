@@ -26,7 +26,6 @@ export default class PostContainer extends React.Component {
             <div className="PostContainer container">
                 {(posts.length >= 1)
                 ? <>
-                    <h6 className="text-center mb-4">See what others are saying about [insert city here]!</h6> 
                     {posts}
                     </>
                 : <></>

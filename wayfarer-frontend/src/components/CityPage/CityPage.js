@@ -5,8 +5,6 @@ import currentUser from '../../api/currentUser';
 import CityHeading from '../CityHeading/CityHeading';
 import AddPostModal from '../AddPostModal/AddPostModal';
 import './CityPage.css';
-import AddPostModal from '../AddPostModal/AddPostModal';
-
 // import PostUpdateModal from '../PostUpdateModal/PostUpdateModal';
 import axios from 'axios';
 
@@ -15,48 +13,8 @@ export default class CityPage extends React.Component {
         currentCityId: "",
         currentCityPosts: [],
         postUpdateClicked: false,
-        cityClickedPosts: [{
-            _id: "2A123sx2341",
-            title: "title",
-            content: "content"
-        },
-            {
-                _id: "2A123sx2341",
-                title: "title",
-                content: "content"
-            },],
-        cities : [
-            {
-                _id: "5e8ce960b8fab90867a17bf4",
-                name: "San Francisco",
-                country: "United States",
-                image: "images/San-Francisco.jpg",
-            },
-            {
-                _id: "5e8d24d79e9b6318c004506d",
-                name: "London",
-                country: "United States",
-                image: "images/London.jpg",
-            },
-            {
-                _id: "5e8d250a9e9b6318c004506f",
-
-                name: "Chicago",
-                country: "United States",
-                image: "images/chicago.jpeg",
-            }],
-        posts : [
-            {
-                _id: "5e8ce9b4b8fab90867a17bf5",
-                title:"post1",
-                content:"post 1 content"
-            },
-            {
-                _id: "5e8cea26b8fab90867a17bf6",
-                title:"post2",
-                content:"post 2 content"
-            },
-        ]
+        cityClickedPosts: [],
+        currentCity: {}
     }
 
     cityOnClick = (event) => {
@@ -65,9 +23,13 @@ export default class CityPage extends React.Component {
             .then((res) => {
                 console.log(res.data, "post get")
                 let updatedPosts = res.data
+                let currentCity = currentUser.getCities();
+                currentCity = currentCity.filter((city) => city._id == id)
+                console.log(currentCity[0])
                 this.setState({
                     currentCityId: id,
-                    currentCityPosts: updatedPosts
+                    currentCityPosts: updatedPosts,
+                    currentCity:currentCity[0]
                 })
             })
             .catch(err => console.log(err))
@@ -126,6 +88,7 @@ export default class CityPage extends React.Component {
 
     render() {
         console.log(currentUser.getCities())
+       
         return (
             <div className="CityPage container-lg">
                 <div className="row">
@@ -136,7 +99,7 @@ export default class CityPage extends React.Component {
                     <div className="col-7 bg-secondary overflow-auto">
                         <div className="container d-flex h-100 flex-column">
                             <div className="row h-25">
-                                <CityHeading cities={this.state.cities}/>
+                                <CityHeading cities={this.state.currentCity}/>
                             </div>
                             <AddPostModal currentCityId={this.currentCityId} handleAddPost={this.handleAddPost} currentCityId = {this.state.currentCityId} authorId = {currentUser.getUserId()}/>
                             <div className="row h-50">

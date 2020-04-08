@@ -52,7 +52,7 @@ export default class AddPostModal extends React.Component {
             {this.props.currentCityId &&
                     <> 
                         <div className="row h-10">
-                            <button onClick={this.addModalClicked} className="btn btn-primary">add</button>
+                            <button id="postbutton" onClick={this.addModalClicked} className="btn btn-primary">add</button>
                         </div>
                     </>}
             
