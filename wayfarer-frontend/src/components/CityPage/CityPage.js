@@ -1,8 +1,11 @@
 import React from 'react';
 import PostContainer from '../../containers/PostContainer';
 import CityContainer from '../../containers/CityContainer';
-// import currentUser from '../../api/currentUser';
+import currentUser from '../../api/currentUser';
 import CityHeading from '../CityHeading/CityHeading';
+import AddPostModal from '../AddPostModal/AddPostModal';
+import './CityPage.css';
+
 // import PostUpdateModal from '../PostUpdateModal/PostUpdateModal';
 import axios from 'axios';
 
@@ -40,26 +43,51 @@ export default class CityPage extends React.Component {
                 _id: "5e8ce960b8fab90867a17bf4",
                 name: "San Francisco",
                 country: "United States",
-                image: "",
+                image: "images/San-Francisco.jpg",
             },
             {
-                _id: "5A234dsfgsdfd2",
                 name: "London",
                 country: "United States",
-                image: "",
+                image: "images/London.jpg",
             },
             {
                 _id: "4A123sxdf341",
+
                 name: "Chicago",
                 country: "United States",
-                image: "",
+                image: "images/chicago.jpeg",
             },
             {
                 _id: "1A13sxdf2341",
 
                 name: "Sydney",
                 country: "Australia",
-                image: "",
+                image: "images/Sydney.jpg",
+            }, 
+            {
+                _id: "3A123xdf2341",
+                name: "San Francisco",
+                country: "United States",
+                image: "images/San-Francisco.jpg",
+            },
+            {
+                _id: "5A234dsfgsdfd2",
+                name: "London",
+                country: "United States",
+                image: "images/London.jpg",
+            },
+            {
+                _id: "4A123sxdf341",
+                name: "Chicago",
+                country: "United States",
+                image: "images/chicago.jpeg",
+            },
+            {
+                _id: "1A13sxdf2341",
+
+                name: "Sydney",
+                country: "Australia",
+                image: "images/Sydney.jpg",
             }],
         posts : [
             {
@@ -74,7 +102,7 @@ export default class CityPage extends React.Component {
             },
         ]
     }
-//
+
     cityOnClick = (event) => {
         let id = event.target.id;
         axios.get(`http://localhost:4000/api/v1/cities/${id}/posts`)
@@ -136,21 +164,18 @@ export default class CityPage extends React.Component {
 
     render() {
         return (
-            <div className="CityPage container">
-                <h1>City Page</h1>
+            <div className="CityPage container-lg">
                 <div className="row">
-                    <div className="col-5 bg-dark">
+                    <div className="col-5 bg-dark overflow-auto">
                         <CityContainer cities={this.state.cities} cityOnClick={this.cityOnClick}/>
 
                     </div>
-                    <div className="col-7 bg-secondary">
+                    <div className="col-7 bg-secondary overflow-auto">
                         <div className="container d-flex h-100 flex-column">
                             <div className="row h-25">
-                                <CityHeading />
+                                <CityHeading cities={this.state.cities}/>
                             </div>
-                            <div className="row h-10">
-                                <button className="btn btn-primary">add</button>
-                            </div>
+                                <AddPostModal currentCityId = {this.state.currentCityId} authorId = {currentUser.getUserId()}/>
                             <div className="row h-50">
                                 <PostContainer editPostClicked={this.editPostClicked} handlePostEdit={this.handlePostEdit} posts={this.state.currentCityPosts} deletePostClicked={this.deletePostClicked} postUpdateClicked={this.state.postUpdateClicked} />
                             </div>
