@@ -46,31 +46,6 @@ export default class CityPage extends React.Component {
                 name: "Sydney",
                 country: "Australia",
                 image: "images/Sydney.jpg",
-            }, 
-            {
-                _id: "3A123xdf2341",
-                name: "San Francisco",
-                country: "United States",
-                image: "images/San-Francisco.jpg",
-            },
-            {
-                _id: "5A234dsfgsdfd2",
-                name: "London",
-                country: "United States",
-                image: "images/London.jpg",
-            },
-            {
-                _id: "4A123sxdf341",
-                name: "Chicago",
-                country: "United States",
-                image: "images/chicago.jpeg",
-            },
-            {
-                _id: "1A13sxdf2341",
-
-                name: "Sydney",
-                country: "Australia",
-                image: "images/Sydney.jpg",
             }],
         posts : [
             {
