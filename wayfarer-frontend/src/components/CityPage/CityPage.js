@@ -29,13 +29,13 @@ export default class CityPage extends React.Component {
                 image: "images/San-Francisco.jpg",
             },
             {
+                _id: "5A234dsfgsdfd2",
                 name: "London",
                 country: "United States",
                 image: "images/London.jpg",
             },
             {
                 _id: "4A123sxdf341",
-
                 name: "Chicago",
                 country: "United States",
                 image: "images/chicago.jpeg",
